@@ -11,6 +11,7 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TARGET = paint2D
 TEMPLATE = app
 
+
 SOURCES += main.cpp\
         mainwindow.cpp \
     openglpanel.cpp

@@ -29,6 +29,7 @@ public:
     virtual ~OpenGLPanel() { }
 
     int getSides();
+    void setColor(QColor color);
 
 protected:
     void initializeGL();
@@ -39,9 +40,16 @@ public slots:
     void changeRadius(double radius);
     void changeNumSides(int sides);
     void changeColors(int color);
+    void updateColor(const QColor &color);
+
+    inline const QColor &getColor() const noexcept {
+        return this->color;
+    }
+
 
 private:
     int sides;
+    QColor color;
     double radius, red, green, blue, alpha;
     QComboBox colorsCombo;
     static constexpr int MAX_SIDES = 360;

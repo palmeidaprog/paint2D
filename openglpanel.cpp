@@ -50,7 +50,9 @@ void OpenGLPanel::paintGL() {
     glLoadIdentity();
     glTranslated(5.0, 5.0, 0.0);
     glLineWidth(1);
-    glColor4f(red, green, blue, alpha);
+    //glColor4f(red, green, blue, alpha);
+    glColor4f(this->color.redF(), this->color.greenF(),
+              this->color.blueF(), this->color.alphaF());
     glBegin(GL_POLYGON);
     for(int i = 0; i < sides; i++) {
         glVertex2f(radius * cos(i*2*M_PI/sides),
@@ -63,6 +65,7 @@ void OpenGLPanel::paintGL() {
 int OpenGLPanel::getSides() {
     return sides;
 }
+
 
 void OpenGLPanel::changeRadius(double radius) {
     if (radius != this->radius && radius >= 1.0 && radius <= 10.0) {
@@ -112,6 +115,11 @@ void OpenGLPanel::changeColors(int color) {
         alpha = 0.7f;
         break;
     }
+    update();
+}
+
+void OpenGLPanel::updateColor(const QColor &color) {
+    this->color = color;
     update();
 }
 

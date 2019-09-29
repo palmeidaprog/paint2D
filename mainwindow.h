@@ -5,6 +5,8 @@
 #include <QDoubleSpinBox>
 #include <QSpinBox>
 #include <QComboBox>
+#include <QToolButton>
+#include <QColorDialog>
 #include "openglpanel.h"
 
 namespace Ui {
@@ -25,9 +27,13 @@ private:
     QSpinBox *spinBoxSides;
     QDoubleSpinBox *doubleSpinBoxRadius;
     QComboBox *colorsCombo;
+    QToolButton *colorBtn;
+    QColor getColor(const QColor &startigColor);
+
 
 public slots:
     void changeSides(int i);
+    void changeColorSlot();
 
 };
 
