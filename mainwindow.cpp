@@ -6,26 +6,26 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow) {
     ui->setupUi(this);
     panel = ui->panel;
-    doubleSpinBoxRadius = ui->doubleSpinBoxRadius;
+    //doubleSpinBoxRadius = ui->doubleSpinBoxRadius;
     spinBoxSides = ui->spinBoxSides;
     //colorsCombo = ui->colorsCombo;
     spinBoxSides->setValue(3);
-    scaleSlider = ui->scaleSlider;
+    //scaleSlider = ui->scaleSlider;
     this->colorBtn = this->ui->colorBtn;
-    doubleSpinBoxRadius->setValue(2.0);
+    //doubleSpinBoxRadius->setValue(2.0);
     dialRotation = ui->dialRotation;
 
     //events
 //    connect(colorsCombo, SIGNAL(activated(int)), panel,
 //            SLOT(changeColors(int)));
-    connect(doubleSpinBoxRadius, SIGNAL(valueChanged(double)), panel,
-            SLOT(changeRadius(double)));
+//    connect(doubleSpinBoxRadius, SIGNAL(valueChanged(double)), panel,
+//            SLOT(changeRadius(double)));
     connect(spinBoxSides, SIGNAL(valueChanged(int)), this,
             SLOT(changeSides(int)));
     connect(this->colorBtn, SIGNAL(clicked()), this,
             SLOT(changeColorSlot()));
-    connect(this->scaleSlider, SIGNAL(rangeChanged(int,int)), this,
-            SLOT(sliderChange(int, int)));
+//    connect(this->scaleSlider, SIGNAL(rangeChanged(int,int)), this,
+//            SLOT(sliderChange(int, int)));
 
     connect(this->dialRotation, SIGNAL(sliderMoved(int)), panel,
             SLOT(rotationChanged(int)));
