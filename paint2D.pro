@@ -20,3 +20,5 @@ HEADERS  += mainwindow.h \
     openglpanel.h
 
 FORMS    += mainwindow.ui
+
+RESOURCES +=

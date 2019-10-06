@@ -9,8 +9,8 @@
 #include <QOpenGLFunctions>
 //#include <OpenGL/gl.h>
 //#include <OpenGL/OpenGL.h>
-//#include <OpenGL.h>
-//#include <gl.h>
+#include <OpenGL.h>
+#include <gl.h>
 #include <cmath>
 
 #include <QComboBox>
@@ -61,6 +61,7 @@ private:
     static constexpr int MIN_SIDES = 3;
 
     void initializeMesh(int w, int h);
+    void drawObject(int sides);
 };
 
 #endif // OPENGLPANEL_H
