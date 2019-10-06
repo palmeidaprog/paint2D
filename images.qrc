@@ -1,1 +1,19 @@
-<RCC/>
+<RCC>
+    <qresource prefix="/">
+        <file>images/angulo.png</file>
+        <file>images/baixo.png</file>
+        <file>images/cima.png</file>
+        <file>images/direita.png</file>
+        <file>images/esquerda.png</file>
+        <file>images/mouse.png</file>
+        <file>images/pantone.png</file>
+        <file>images/pentagono.png</file>
+        <file>images/retangulo.png</file>
+        <file>images/retangulo2.png</file>
+        <file>images/setamover.png</file>
+        <file>images/triangulo.png</file>
+        <file>images/zoomIn.png</file>
+        <file>images/zoomOut.png</file>
+    </qresource>
+</RCC>
+
