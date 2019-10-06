@@ -17,9 +17,9 @@
    <widget class="OpenGLPanel" name="panel">
     <property name="geometry">
      <rect>
-      <x>20</x>
+      <x>0</x>
       <y>-10</y>
-      <width>581</width>
+      <width>711</width>
       <height>631</height>
      </rect>
     </property>
@@ -125,8 +125,8 @@
       <widget class="QDial" name="dialRotation">
        <property name="geometry">
         <rect>
-         <x>10</x>
-         <y>50</y>
+         <x>190</x>
+         <y>0</y>
          <width>50</width>
          <height>64</height>
         </rect>
@@ -136,7 +136,7 @@
        <property name="geometry">
         <rect>
          <x>210</x>
-         <y>60</y>
+         <y>70</y>
          <width>22</width>
          <height>111</height>
         </rect>
@@ -157,8 +157,8 @@
       <widget class="QDoubleSpinBox" name="doubleSpinBoxRadius">
        <property name="geometry">
         <rect>
-         <x>60</x>
-         <y>20</y>
+         <x>10</x>
+         <y>150</y>
          <width>137</width>
          <height>24</height>
         </rect>
@@ -186,6 +186,145 @@
        </property>
        <property name="value">
         <double>2.000000000000000</double>
+       </property>
+      </widget>
+      <widget class="QWidget" name="verticalLayoutWidget_3">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>30</y>
+         <width>130</width>
+         <height>90</height>
+        </rect>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_5">
+        <item alignment="Qt::AlignHCenter">
+         <widget class="QToolButton" name="up_btn">
+          <property name="maximumSize">
+           <size>
+            <width>50</width>
+            <height>40</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>...</string>
+          </property>
+          <property name="icon">
+           <iconset>
+            <normaloff>../../Desktop/Unicap/6ºPeríodo/Computação Gráfica/projeto1ºGQ/Fotos/cima.png</normaloff>../../Desktop/Unicap/6ºPeríodo/Computação Gráfica/projeto1ºGQ/Fotos/cima.png</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>30</width>
+            <height>50</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout">
+          <item>
+           <widget class="QToolButton" name="left_btn">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>50</width>
+              <height>40</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>triangle</string>
+            </property>
+            <property name="icon">
+             <iconset>
+              <normaloff>../../Desktop/Unicap/6ºPeríodo/Computação Gráfica/projeto1ºGQ/Fotos/esquerda.png</normaloff>../../Desktop/Unicap/6ºPeríodo/Computação Gráfica/projeto1ºGQ/Fotos/esquerda.png</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>30</width>
+              <height>50</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QToolButton" name="down_btn">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>50</width>
+              <height>40</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>triangle</string>
+            </property>
+            <property name="icon">
+             <iconset>
+              <normaloff>../../Desktop/Unicap/6ºPeríodo/Computação Gráfica/projeto1ºGQ/Fotos/baixo.png</normaloff>../../Desktop/Unicap/6ºPeríodo/Computação Gráfica/projeto1ºGQ/Fotos/baixo.png</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>30</width>
+              <height>50</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QToolButton" name="rigth_btn">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>50</width>
+              <height>40</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>triangle</string>
+            </property>
+            <property name="icon">
+             <iconset>
+              <normaloff>../../Desktop/Unicap/6ºPeríodo/Computação Gráfica/projeto1ºGQ/Fotos/direita.png</normaloff>../../Desktop/Unicap/6ºPeríodo/Computação Gráfica/projeto1ºGQ/Fotos/direita.png</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>30</width>
+              <height>50</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QLabel" name="label">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>10</y>
+         <width>81</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Translate</string>
        </property>
       </widget>
      </widget>
@@ -226,28 +365,6 @@
        </property>
        <property name="minimum">
         <number>3</number>
-       </property>
-      </widget>
-      <widget class="QToolButton" name="colorBtn">
-       <property name="enabled">
-        <bool>true</bool>
-       </property>
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>40</y>
-         <width>26</width>
-         <height>22</height>
-        </rect>
-       </property>
-       <property name="toolTip">
-        <string>Cria Novo Polígono</string>
-       </property>
-       <property name="statusTip">
-        <string>Cria Novo Polígono</string>
-       </property>
-       <property name="text">
-        <string>...</string>
        </property>
       </widget>
      </widget>
@@ -339,17 +456,230 @@
     </widget>
    </widget>
   </widget>
-  <widget class="QDockWidget" name="dockWidget">
+  <widget class="QDockWidget" name="dockWidget_4">
+   <attribute name="dockWidgetArea">
+    <number>2</number>
+   </attribute>
+   <widget class="QWidget" name="dockWidgetContents_7"/>
+  </widget>
+  <widget class="QDockWidget" name="dockWidget_5">
    <property name="minimumSize">
     <size>
-     <width>62</width>
-     <height>62</height>
+     <width>82</width>
+     <height>634</height>
     </size>
    </property>
    <attribute name="dockWidgetArea">
     <number>1</number>
    </attribute>
-   <widget class="QWidget" name="dockWidgetContents"/>
+   <widget class="QWidget" name="dockWidgetContents_8">
+    <widget class="QWidget" name="verticalLayoutWidget_2">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>20</y>
+       <width>51</width>
+       <height>437</height>
+      </rect>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_2">
+      <item>
+       <widget class="QToolButton" name="move_btn">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>50</width>
+          <height>100</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>triangle</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>../../Desktop/Unicap/6ºPeríodo/Computação Gráfica/projeto1ºGQ/Fotos/setamover.png</normaloff>../../Desktop/Unicap/6ºPeríodo/Computação Gráfica/projeto1ºGQ/Fotos/setamover.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>30</width>
+          <height>50</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QToolButton" name="draw_triangle_btn">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>50</width>
+          <height>100</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>triangle</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>../../Desktop/Unicap/6ºPeríodo/Computação Gráfica/projeto1ºGQ/Fotos/triangulo.png</normaloff>../../Desktop/Unicap/6ºPeríodo/Computação Gráfica/projeto1ºGQ/Fotos/triangulo.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>30</width>
+          <height>50</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QToolButton" name="draw_square_btn">
+        <property name="maximumSize">
+         <size>
+          <width>50</width>
+          <height>100</height>
+         </size>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>../../Desktop/Unicap/6ºPeríodo/Computação Gráfica/projeto1ºGQ/Fotos/retangulo.png</normaloff>../../Desktop/Unicap/6ºPeríodo/Computação Gráfica/projeto1ºGQ/Fotos/retangulo.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>30</width>
+          <height>50</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QToolButton" name="draw_poligon_btn">
+        <property name="maximumSize">
+         <size>
+          <width>50</width>
+          <height>100</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>...</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>../../Desktop/Unicap/6ºPeríodo/Computação Gráfica/projeto1ºGQ/Fotos/pentagono.png</normaloff>../../Desktop/Unicap/6ºPeríodo/Computação Gráfica/projeto1ºGQ/Fotos/pentagono.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>30</width>
+          <height>50</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QToolButton" name="zooin_btn">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>50</width>
+          <height>100</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>triangle</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>../../Desktop/Unicap/6ºPeríodo/Computação Gráfica/projeto1ºGQ/Fotos/zoomIn.png</normaloff>../../Desktop/Unicap/6ºPeríodo/Computação Gráfica/projeto1ºGQ/Fotos/zoomIn.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>30</width>
+          <height>50</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QToolButton" name="zoomout_btn">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>50</width>
+          <height>100</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>triangle</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>../../Desktop/Unicap/6ºPeríodo/Computação Gráfica/projeto1ºGQ/Fotos/zoomOut.png</normaloff>../../Desktop/Unicap/6ºPeríodo/Computação Gráfica/projeto1ºGQ/Fotos/zoomOut.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>30</width>
+          <height>50</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QToolButton" name="colorBtn">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>50</width>
+          <height>100</height>
+         </size>
+        </property>
+        <property name="toolTip">
+         <string>Cria Novo Polígono</string>
+        </property>
+        <property name="statusTip">
+         <string>Cria Novo Polígono</string>
+        </property>
+        <property name="text">
+         <string>...</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>../../Desktop/Unicap/6ºPeríodo/Computação Gráfica/projeto1ºGQ/Fotos/pantone.png</normaloff>../../Desktop/Unicap/6ºPeríodo/Computação Gráfica/projeto1ºGQ/Fotos/pantone.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>30</width>
+          <height>50</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </widget>
   </widget>
   <action name="actionNovo">
    <property name="text">

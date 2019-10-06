@@ -2,16 +2,17 @@
 #define OPENGLPANEL_H
 
 #define GL_SILENCE_DEPRECATION
+#include <iostream>
 #include <QApplication>
 #include <QMainWindow>
 #include <QOpenGLWidget>
 #include <QOpenGLFunctions>
-#include <OpenGL/gl.h>
-#include <OpenGL/OpenGL.h>
+//#include <OpenGL/gl.h>
+//#include <OpenGL/OpenGL.h>
 //#include <OpenGL.h>
 //#include <gl.h>
 #include <cmath>
-#include <iostream>
+
 #include <QComboBox>
 #include "mainwindow.h"
 
