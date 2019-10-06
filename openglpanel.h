@@ -7,8 +7,9 @@
 #include <QOpenGLWidget>
 #include <QOpenGLFunctions>
 #include <OpenGL/gl.h>
-#include <OpenGL.h>
-#include <gl.h>
+#include <OpenGL/OpenGL.h>
+//#include <OpenGL.h>
+//#include <gl.h>
 #include <cmath>
 #include <iostream>
 #include <QComboBox>
@@ -31,6 +32,7 @@ public:
     int getSides();
     void setColor(QColor color);
 
+
 protected:
     void initializeGL();
     void resizeGL(int w, int h);
@@ -41,6 +43,8 @@ public slots:
     void changeNumSides(int sides);
     void changeColors(int color);
     void updateColor(const QColor &color);
+    void rotationChanged(int initial) noexcept;
+    //void rotate()
 
     inline const QColor &getColor() const noexcept {
         return this->color;
@@ -54,6 +58,8 @@ private:
     QComboBox colorsCombo;
     static constexpr int MAX_SIDES = 360;
     static constexpr int MIN_SIDES = 3;
+
+    void initializeMesh(int w, int h);
 };
 
 #endif // OPENGLPANEL_H

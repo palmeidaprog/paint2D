@@ -2,8 +2,7 @@
 
 
 OpenGLPanel::OpenGLPanel(QWidget *parent) : QOpenGLWidget(parent), sides(3),
-    radius(2.0f), red(1.0f/255*239), green(1.0f/255*145), blue(1.0f/255*143),
-    alpha(0.7f) {
+    radius(2.0f), color(Qt::yellow) {
     //setFormat(QGL::DoubleBuffer | QGL::DepthBuffer);
     //ui = MainWindow::getInstance();
 }
@@ -38,18 +37,25 @@ void OpenGLPanel::resizeGL(int w, int h) {
 void OpenGLPanel::initializeGL() {
     initializeOpenGLFunctions();
     glShadeModel(GL_SMOOTH);
-    glClearColor(1.0, 1.0, 1.0, 0.0);
+    glClearColor(1.0, 1, 1, 1);
     glEnable(GL_DEPTH_TEST);
     glDepthFunc(GL_LEQUAL);
     glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
+
 }
 
 void OpenGLPanel::paintGL() {
-    // GL_COLOR_BUFFET_BIT | GL_DEPTH_BUFFER_BIT
-    glClear(GL_DEPTH_BUFFER_BIT);
+
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    this->initializeMesh(200, 200);
+
     glLoadIdentity();
+
+    //glRotated(90, 1,0,0);
     glTranslated(5.0, 5.0, 0.0);
-    glLineWidth(1);
+    //glRotatef(90, 0,1,0);
+    glOrtho(-1,1,-1,1,-1,1);
+
     //glColor4f(red, green, blue, alpha);
     glColor4f(this->color.redF(), this->color.greenF(),
               this->color.blueF(), this->color.alphaF());
@@ -60,11 +66,24 @@ void OpenGLPanel::paintGL() {
 
     }
     glEnd();
+
+    glBegin(GL_LINES);
+    glLineWidth(3);
+    glColor4f(0, 0 , 0,1);
+    for(int i = 0; i < sides; i++) {
+        glVertex2f(radius * cos(i*2*M_PI/sides),
+                   radius * sin(i*2*M_PI/sides));
+
+    }
+    glEnd();
+//    glLoadIdentity();
+//    glTranslatef(-(this->width()/2), -(this->height()/2), 0);
 }
 
 int OpenGLPanel::getSides() {
     return sides;
 }
+
 
 
 void OpenGLPanel::changeRadius(double radius) {
@@ -80,6 +99,50 @@ void OpenGLPanel::changeNumSides(int sides) {
         this->sides = sides;
         update();
     }
+}
+
+void OpenGLPanel::updateColor(const QColor &color) {
+    this->color = color;
+    update();
+}
+
+void OpenGLPanel::rotationChanged(int initial) noexcept {
+
+    //glRotated(initial/100.0, 0.0, 0.0, 0.0);
+    //glRotated(initial, 0.0, 1.0, 0.0);
+    cout << initial << endl;
+    //glLoadIdentity();
+    glLoadIdentity();
+    glTranslatef(0.5f, 0.5f, 0.5f);
+    glRotatef(45.f, 1.f, 1.f, 1.f);
+    glTranslatef(-0.5f, -0.5f, -0.5f);
+    glColor3f(0.f, 0.f, 1.f);
+    update();
+}
+
+void OpenGLPanel::initializeMesh(int w, int h) {
+    int increment = this->height()/h;
+    cout << this->height() << "x";
+    for (int i = 0; i <= this->height(); i += increment) {
+        glBegin(GL_LINES);
+        glColor3f(0,0,0);
+        glVertex2i(i, 0);
+        glVertex2i(i, this->height());
+        glEnd();
+    }
+
+    increment = this->width()/w;
+    cout << this->width() << endl;
+    for (int i = 0; i <= this->width(); i += increment) {
+        glBegin((GL_LINES));
+        glColor3f(0,0,0);
+        glVertex2i(0, i);
+        glVertex2i(this->width(), i);
+        glEnd();
+    }
+
+    glFlush();
+    //update();
 }
 
 void OpenGLPanel::changeColors(int color) {
@@ -118,8 +181,4 @@ void OpenGLPanel::changeColors(int color) {
     update();
 }
 
-void OpenGLPanel::updateColor(const QColor &color) {
-    this->color = color;
-    update();
-}
 

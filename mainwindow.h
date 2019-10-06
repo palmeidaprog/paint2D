@@ -7,6 +7,8 @@
 #include <QComboBox>
 #include <QToolButton>
 #include <QColorDialog>
+#include <QSlider>
+#include <QDial>
 #include "openglpanel.h"
 
 namespace Ui {
@@ -28,12 +30,15 @@ private:
     QDoubleSpinBox *doubleSpinBoxRadius;
     QComboBox *colorsCombo;
     QToolButton *colorBtn;
+    QSlider *scaleSlider;
+    QDial *dialRotation;
     QColor getColor(const QColor &startigColor);
 
 
 public slots:
     void changeSides(int i);
     void changeColorSlot();
+    void sliderChange(int i0, int i1);
 
 };
 
