@@ -128,49 +128,39 @@
       <attribute name="title">
        <string>Translate</string>
       </attribute>
-      <widget class="QWidget" name="verticalLayoutWidget_3">
+      <widget class="QWidget" name="verticalLayoutWidget_4">
        <property name="geometry">
         <rect>
-         <x>10</x>
-         <y>30</y>
-         <width>150</width>
-         <height>90</height>
+         <x>20</x>
+         <y>10</y>
+         <width>201</width>
+         <height>151</height>
         </rect>
        </property>
-       <layout class="QVBoxLayout" name="verticalLayout_5">
+       <layout class="QVBoxLayout" name="verticalLayout_6">
+        <property name="leftMargin">
+         <number>20</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>20</number>
+        </property>
+        <property name="bottomMargin">
+         <number>20</number>
+        </property>
         <item alignment="Qt::AlignHCenter">
-         <widget class="QToolButton" name="up_btn">
-          <property name="maximumSize">
-           <size>
-            <width>50</width>
-            <height>40</height>
-           </size>
-          </property>
+         <widget class="QLabel" name="label">
           <property name="text">
-           <string>...</string>
-          </property>
-          <property name="icon">
-           <iconset resource="images.qrc">
-            <normaloff>:/images/cima.png</normaloff>:/images/cima.png</iconset>
-          </property>
-          <property name="iconSize">
-           <size>
-            <width>30</width>
-            <height>50</height>
-           </size>
+           <string>Translate</string>
           </property>
          </widget>
         </item>
         <item>
-         <layout class="QHBoxLayout" name="horizontalLayout">
-          <item>
-           <widget class="QToolButton" name="left_btn">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
+         <layout class="QVBoxLayout" name="verticalLayout_5">
+          <item alignment="Qt::AlignHCenter">
+           <widget class="QToolButton" name="up_btn">
             <property name="maximumSize">
              <size>
               <width>50</width>
@@ -178,11 +168,11 @@
              </size>
             </property>
             <property name="text">
-             <string>triangle</string>
+             <string>...</string>
             </property>
             <property name="icon">
              <iconset resource="images.qrc">
-              <normaloff>:/images/esquerda.png</normaloff>:/images/esquerda.png</iconset>
+              <normaloff>:/images/cima.png</normaloff>:/images/cima.png</iconset>
             </property>
             <property name="iconSize">
              <size>
@@ -193,7 +183,304 @@
            </widget>
           </item>
           <item>
-           <widget class="QToolButton" name="down_btn">
+           <layout class="QHBoxLayout" name="horizontalLayout">
+            <item>
+             <widget class="QToolButton" name="left_btn">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>50</width>
+                <height>40</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>triangle</string>
+              </property>
+              <property name="icon">
+               <iconset resource="images.qrc">
+                <normaloff>:/images/esquerda.png</normaloff>:/images/esquerda.png</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>30</width>
+                <height>50</height>
+               </size>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QToolButton" name="down_btn">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>50</width>
+                <height>40</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>triangle</string>
+              </property>
+              <property name="icon">
+               <iconset resource="images.qrc">
+                <normaloff>:/images/baixo.png</normaloff>:/images/baixo.png</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>30</width>
+                <height>50</height>
+               </size>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QToolButton" name="rigth_btn">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>50</width>
+                <height>40</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>triangle</string>
+              </property>
+              <property name="icon">
+               <iconset resource="images.qrc">
+                <normaloff>:/images/direita.png</normaloff>:/images/direita.png</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>30</width>
+                <height>50</height>
+               </size>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="verticalLayoutWidget_5">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>160</y>
+         <width>231</width>
+         <height>71</height>
+        </rect>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_7">
+        <property name="spacing">
+         <number>10</number>
+        </property>
+        <property name="leftMargin">
+         <number>10</number>
+        </property>
+        <property name="topMargin">
+         <number>5</number>
+        </property>
+        <property name="rightMargin">
+         <number>10</number>
+        </property>
+        <property name="bottomMargin">
+         <number>5</number>
+        </property>
+        <item alignment="Qt::AlignHCenter">
+         <widget class="QLabel" name="label_2">
+          <property name="text">
+           <string>Translate to:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="translate_layout">
+          <item>
+           <widget class="QLabel" name="tranlate_x_label">
+            <property name="text">
+             <string>X:</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QTextEdit" name="translate_x_texteEdit">
+            <property name="readOnly">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="translate_y_label">
+            <property name="text">
+             <string>Y:</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QTextEdit" name="translate_y_texteEdit"/>
+          </item>
+          <item>
+           <widget class="QPushButton" name="translate_go_btn">
+            <property name="text">
+             <string>Go</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="tab_3">
+      <attribute name="title">
+       <string>Rotate</string>
+      </attribute>
+      <widget class="QWidget" name="verticalLayoutWidget_6">
+       <property name="geometry">
+        <rect>
+         <x>40</x>
+         <y>40</y>
+         <width>160</width>
+         <height>80</height>
+        </rect>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_8">
+        <property name="spacing">
+         <number>10</number>
+        </property>
+        <item alignment="Qt::AlignHCenter">
+         <widget class="QLabel" name="label_5">
+          <property name="text">
+           <string>Rotate</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QDial" name="dialRotation"/>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="verticalLayoutWidget_7">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>110</y>
+         <width>218</width>
+         <height>111</height>
+        </rect>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_9">
+        <property name="spacing">
+         <number>20</number>
+        </property>
+        <property name="leftMargin">
+         <number>20</number>
+        </property>
+        <property name="topMargin">
+         <number>20</number>
+        </property>
+        <property name="rightMargin">
+         <number>20</number>
+        </property>
+        <property name="bottomMargin">
+         <number>20</number>
+        </property>
+        <item alignment="Qt::AlignHCenter">
+         <widget class="QLabel" name="label_7">
+          <property name="text">
+           <string>Rotate angule:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="rotate_layout">
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
+          <item>
+           <widget class="QTextEdit" name="rotate_angule_texteEdit"/>
+          </item>
+          <item>
+           <widget class="QToolButton" name="rotate_btn">
+            <property name="maximumSize">
+             <size>
+              <width>50</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>...</string>
+            </property>
+            <property name="icon">
+             <iconset resource="images.qrc">
+              <normaloff>:/images/angulo.png</normaloff>:/images/angulo.png</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>50</width>
+              <height>50</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="tab">
+      <attribute name="title">
+       <string>Scale</string>
+      </attribute>
+      <widget class="QWidget" name="verticalLayoutWidget_8">
+       <property name="geometry">
+        <rect>
+         <x>50</x>
+         <y>20</y>
+         <width>160</width>
+         <height>137</height>
+        </rect>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_10">
+        <property name="spacing">
+         <number>20</number>
+        </property>
+        <item alignment="Qt::AlignHCenter">
+         <widget class="QLabel" name="label_3">
+          <property name="text">
+           <string>Scale</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_2">
+          <item>
+           <widget class="QToolButton" name="scale_zoomIn_btn">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
               <horstretch>0</horstretch>
@@ -203,7 +490,7 @@
             <property name="maximumSize">
              <size>
               <width>50</width>
-              <height>40</height>
+              <height>100</height>
              </size>
             </property>
             <property name="text">
@@ -211,7 +498,7 @@
             </property>
             <property name="icon">
              <iconset resource="images.qrc">
-              <normaloff>:/images/baixo.png</normaloff>:/images/baixo.png</iconset>
+              <normaloff>:/images/zoomIn.png</normaloff>:/images/zoomIn.png</iconset>
             </property>
             <property name="iconSize">
              <size>
@@ -222,7 +509,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QToolButton" name="rigth_btn">
+           <widget class="QToolButton" name="scale_zoomOut_btn">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
               <horstretch>0</horstretch>
@@ -232,7 +519,7 @@
             <property name="maximumSize">
              <size>
               <width>50</width>
-              <height>40</height>
+              <height>100</height>
              </size>
             </property>
             <property name="text">
@@ -240,7 +527,7 @@
             </property>
             <property name="icon">
              <iconset resource="images.qrc">
-              <normaloff>:/images/direita.png</normaloff>:/images/direita.png</iconset>
+              <normaloff>:/images/zoomOut.png</normaloff>:/images/zoomOut.png</iconset>
             </property>
             <property name="iconSize">
              <size>
@@ -252,276 +539,35 @@
           </item>
          </layout>
         </item>
-       </layout>
-      </widget>
-      <widget class="QLabel" name="label">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>10</y>
-         <width>81</width>
-         <height>17</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Translate</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="label_2">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>130</y>
-         <width>81</width>
-         <height>17</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Translate to:</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="label_6">
-       <property name="geometry">
-        <rect>
-         <x>70</x>
-         <y>150</y>
-         <width>137</width>
-         <height>29</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-      </widget>
-      <widget class="QWidget" name="horizontalLayoutWidget">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>150</y>
-         <width>211</width>
-         <height>31</height>
-        </rect>
-       </property>
-       <layout class="QHBoxLayout" name="translate_layout">
         <item>
-         <widget class="QLabel" name="tranlate_x_label">
-          <property name="text">
-           <string>X:</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QTextEdit" name="translate_x_texteEdit"/>
-        </item>
-        <item>
-         <widget class="QLabel" name="translate_y_label">
-          <property name="text">
-           <string>Y:</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QTextEdit" name="translate_y_texteEdit"/>
-        </item>
-        <item>
-         <widget class="QPushButton" name="translate_go_btn">
-          <property name="text">
-           <string>Go</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </widget>
-     </widget>
-     <widget class="QWidget" name="tab_3">
-      <attribute name="title">
-       <string>Rotate</string>
-      </attribute>
-      <widget class="QDial" name="dialRotation">
-       <property name="geometry">
-        <rect>
-         <x>90</x>
-         <y>30</y>
-         <width>50</width>
-         <height>64</height>
-        </rect>
-       </property>
-      </widget>
-      <widget class="QLabel" name="label_5">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>20</y>
-         <width>54</width>
-         <height>17</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Rotate:</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="label_7">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>130</y>
-         <width>101</width>
-         <height>17</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Rotate angule:</string>
-       </property>
-      </widget>
-      <widget class="QWidget" name="horizontalLayoutWidget_2">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>151</y>
-         <width>141</width>
-         <height>31</height>
-        </rect>
-       </property>
-       <layout class="QHBoxLayout" name="rotate_layout">
-        <item>
-         <widget class="QTextEdit" name="rotate_angule_texteEdit"/>
-        </item>
-        <item>
-         <widget class="QToolButton" name="rotate_btn">
-          <property name="maximumSize">
-           <size>
-            <width>50</width>
-            <height>50</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>...</string>
-          </property>
-          <property name="icon">
-           <iconset resource="images.qrc">
-            <normaloff>:/images/angulo.png</normaloff>:/images/angulo.png</iconset>
-          </property>
-          <property name="iconSize">
-           <size>
-            <width>50</width>
-            <height>50</height>
-           </size>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </widget>
-     </widget>
-     <widget class="QWidget" name="tab">
-      <attribute name="title">
-       <string>Scale</string>
-      </attribute>
-      <widget class="QLabel" name="label_3">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>10</y>
-         <width>81</width>
-         <height>17</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Scale:</string>
-       </property>
-      </widget>
-      <widget class="QWidget" name="horizontalLayoutWidget_3">
-       <property name="geometry">
-        <rect>
-         <x>30</x>
-         <y>50</y>
-         <width>160</width>
-         <height>61</height>
-        </rect>
-       </property>
-       <layout class="QHBoxLayout" name="horizontalLayout_2">
-        <item>
-         <widget class="QToolButton" name="scale_zoomIn_btn">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>50</width>
-            <height>100</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>triangle</string>
-          </property>
-          <property name="icon">
-           <iconset resource="images.qrc">
-            <normaloff>:/images/zoomIn.png</normaloff>:/images/zoomIn.png</iconset>
-          </property>
-          <property name="iconSize">
-           <size>
-            <width>30</width>
-            <height>50</height>
-           </size>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QToolButton" name="scale_zoomOut_btn">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>50</width>
-            <height>100</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>triangle</string>
-          </property>
-          <property name="icon">
-           <iconset resource="images.qrc">
-            <normaloff>:/images/zoomOut.png</normaloff>:/images/zoomOut.png</iconset>
-          </property>
-          <property name="iconSize">
-           <size>
-            <width>30</width>
-            <height>50</height>
-           </size>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </widget>
-      <widget class="QWidget" name="horizontalLayoutWidget_4">
-       <property name="geometry">
-        <rect>
-         <x>49</x>
-         <y>110</y>
-         <width>141</width>
-         <height>31</height>
-        </rect>
-       </property>
-       <layout class="QHBoxLayout" name="horizontalLayout_3">
-        <item>
-         <widget class="QLabel" name="zoomIn_label">
-          <property name="text">
-           <string>Zoom In</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="zoomOut_label">
-          <property name="text">
-           <string>Zoom Out</string>
-          </property>
-         </widget>
+         <layout class="QHBoxLayout" name="horizontalLayout_3">
+          <item>
+           <widget class="QLabel" name="zoomIn_label">
+            <property name="maximumSize">
+             <size>
+              <width>50</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>Zoom In</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="zoomOut_label">
+            <property name="maximumSize">
+             <size>
+              <width>60</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>Zoom Out</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </item>
        </layout>
       </widget>
@@ -631,10 +677,39 @@
        <x>20</x>
        <y>50</y>
        <width>55</width>
-       <height>492</height>
+       <height>555</height>
       </rect>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_2">
+      <item>
+       <widget class="QToolButton" name="mouse_btn">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>50</width>
+          <height>100</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>triangle</string>
+        </property>
+        <property name="icon">
+         <iconset resource="images.qrc">
+          <normaloff>:/images/mouse.png</normaloff>:/images/mouse.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>30</width>
+          <height>50</height>
+         </size>
+        </property>
+       </widget>
+      </item>
       <item>
        <widget class="QToolButton" name="move_btn">
         <property name="sizePolicy">
@@ -749,7 +824,7 @@
       <item>
        <widget class="QSpinBox" name="spinBoxSides">
         <property name="minimum">
-         <number>4</number>
+         <number>5</number>
         </property>
        </widget>
       </item>
