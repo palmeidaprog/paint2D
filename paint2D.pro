@@ -14,30 +14,19 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    openglpanel.cpp
+    openglpanel.cpp \
+    paintobject.cpp \
+    transformation.cpp \
+    objectscontroller.cpp
 
 HEADERS  += mainwindow.h \
-    openglpanel.h
+    openglpanel.h \
+    paintobject.h \
+    transformationtype.h \
+    transformation.h \
+    objectscontroller.h
 
 FORMS    += mainwindow.ui
-
-RESOURCES +=
-=======
-DISTFILES += \
-    ../../Desktop/Unicap/6ºPeríodo/Computação Gráfica/projeto1ºGQ/resources/angulo.png \
-    ../../Desktop/Unicap/6ºPeríodo/Computação Gráfica/projeto1ºGQ/resources/baixo.png \
-    ../../Desktop/Unicap/6ºPeríodo/Computação Gráfica/projeto1ºGQ/resources/cima.png \
-    ../../Desktop/Unicap/6ºPeríodo/Computação Gráfica/projeto1ºGQ/resources/direita.png \
-    ../../Desktop/Unicap/6ºPeríodo/Computação Gráfica/projeto1ºGQ/resources/esquerda.png \
-    ../../Desktop/Unicap/6ºPeríodo/Computação Gráfica/projeto1ºGQ/resources/mouse.png \
-    ../../Desktop/Unicap/6ºPeríodo/Computação Gráfica/projeto1ºGQ/resources/pantone.png \
-    ../../Desktop/Unicap/6ºPeríodo/Computação Gráfica/projeto1ºGQ/resources/pentagono.png \
-    ../../Desktop/Unicap/6ºPeríodo/Computação Gráfica/projeto1ºGQ/resources/retangulo.png \
-    ../../Desktop/Unicap/6ºPeríodo/Computação Gráfica/projeto1ºGQ/resources/retangulo2.png \
-    ../../Desktop/Unicap/6ºPeríodo/Computação Gráfica/projeto1ºGQ/resources/setamover.png \
-    ../../Desktop/Unicap/6ºPeríodo/Computação Gráfica/projeto1ºGQ/resources/triangulo.png \
-    ../../Desktop/Unicap/6ºPeríodo/Computação Gráfica/projeto1ºGQ/resources/zoomIn.png \
-    ../../Desktop/Unicap/6ºPeríodo/Computação Gráfica/projeto1ºGQ/resources/zoomOut.png
 
 RESOURCES += \
     images.qrc
