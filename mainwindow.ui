@@ -122,7 +122,7 @@
       </sizepolicy>
      </property>
      <property name="currentIndex">
-      <number>2</number>
+      <number>3</number>
      </property>
      <widget class="QWidget" name="tab_2">
       <attribute name="title">
@@ -599,7 +599,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QLineEdit" name="lineEdit"/>
+           <widget class="QLineEdit" name="aEdit"/>
           </item>
          </layout>
         </item>
@@ -613,12 +613,12 @@
            </widget>
           </item>
           <item>
-           <widget class="QLineEdit" name="lineEdit_2"/>
+           <widget class="QLineEdit" name="bEdit"/>
           </item>
          </layout>
         </item>
         <item>
-         <widget class="QPushButton" name="pushButton">
+         <widget class="QPushButton" name="shearBtn">
           <property name="text">
            <string>Shear it Up!</string>
           </property>
@@ -646,14 +646,14 @@
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_7">
           <item>
-           <widget class="QCheckBox" name="reflexX">
+           <widget class="QCheckBox" name="xCheck">
             <property name="text">
              <string>X</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QCheckBox" name="reflexY">
+           <widget class="QCheckBox" name="yCheck">
             <property name="text">
              <string>Y</string>
             </property>
@@ -662,7 +662,7 @@
          </layout>
         </item>
         <item>
-         <widget class="QPushButton" name="pushButton_2">
+         <widget class="QPushButton" name="reflectBtn">
           <property name="text">
            <string>Let's Reflect!</string>
           </property>

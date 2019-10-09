@@ -73,6 +73,16 @@ void ObjectsController::addScale(double x, double y)
     this->selected->addScale(x, y);
 }
 
+void ObjectsController::addReflection(double x, double y)
+{
+    this->selected->addReflection(x, y);
+}
+
+void ObjectsController::addShear(double b, double a)
+{
+    this->selected->addShear(b, a);
+}
+
 PaintObject *ObjectsController::getNextObject()
 {
     if (this->obj_index == this->objects.size()) {

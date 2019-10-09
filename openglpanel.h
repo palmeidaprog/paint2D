@@ -49,6 +49,8 @@ public:
     void rotate(float angle);
     void translate(double x, double y);
     void scale(double x, double y);
+    void shear(double b, double a);
+    void reflection(double x, double y);
 
     void setZoom(double change) {
         this->zoom *= change;
@@ -56,6 +58,8 @@ public:
     }
 
     void meshSize(int x, int y);
+    void glShear(double b, double a);
+    void glRef(double x, double y);
 
 
 protected:
@@ -70,6 +74,8 @@ public slots:
     void updateColor(const QColor &color);
     void rotationChanged(int initial) noexcept;
     void drawObject(int sides);
+
+
 
     //void rotate()
 

@@ -16,6 +16,7 @@
 #include <QFileDialog>
 #include <QMessageBox>
 #include "openglpanel.h"
+#include <QCheckBox>
 #include <fstream>
 
 namespace Ui {
@@ -36,14 +37,15 @@ private:
     QSpinBox *spinBoxSides;
     QDoubleSpinBox *doubleSpinBoxRadius;
     QComboBox *colorsCombo;
+    QCheckBox *xCheck, *yCheck;
     QToolButton *colorBtn, *rotateBtn, *makeTriangleBtn, *makeSquareBtn,
     *makePolygonBtn, *upBtn, *downBtn, *rightBtn, *leftBtn, *zoomInBtn,
     *zoomOutBtn, *scaleUpBtn, *scaleDownBtn, *meshBtn;
     QSlider *scaleSlider;
     QDial *dialRotation;
-    QLineEdit *angleRotEdit, *xEdit, *yEdit;
+    QLineEdit *angleRotEdit, *xEdit, *yEdit, *aEdit, *bEdit;
     QPushButton *goTransBtn, *delSelectedBtn, *deleteAllBtn, *openBtn,
-    *saveBtn;
+    *reflectBtn, *shearBtn, *saveBtn;
     QStringListModel *model;
     QListView *view;
 
@@ -64,6 +66,8 @@ public slots:
     void leftTranslate();
     void zoomIn();
     void zoomOut();
+    void shear();
+    void reflection();
 
     void openObject();
     void saveObject();

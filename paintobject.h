@@ -30,9 +30,9 @@ public:
     bool hasNextTransformation();
     Transformation &nextTransformation();
     void addTranslation(double x, double y);
-   // void addShear(double a, double b);
+    void addShear(double b, double a);
     void addRotation(double angle);
-   // void addReflection(bool x, bool y);
+    void addReflection(double x, double y);
     void addScale(double x, double y);
     PaintObject &setSelected();
     void setColor(const QColor &color);

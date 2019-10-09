@@ -35,6 +35,8 @@ public:
     void addTranslation(double x, double y);
     void addRotation(double angle);
     void addScale(double x, double y);
+    void addReflection(double x, double y);
+    void addShear(double b, double a);
     PaintObject *getNextObject();
     bool hasNextObject();
     void setColor(const QColor &color);

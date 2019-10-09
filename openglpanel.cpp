@@ -67,6 +67,7 @@ void OpenGLPanel::paintGL() {
     glLoadIdentity();
     //glTranslated(10.0, 10.0, 0.0);
     this->initializeMesh(meshX, meshY);
+    this->objects.resetIndexing();
 
 //    size_t size = this->objects.size();
 //    for (size_t i = 0; i < size; i++) {
@@ -86,12 +87,10 @@ void OpenGLPanel::paintGL() {
         }
         //cout << "test1" << endl; // @debug
         glPushMatrix();
-        glLoadIdentity();
+        //glLoadIdentity();
         //cout << "test2" << endl; // @debug
-        cout << obj->getId() << " " << obj->getColor().redF() << endl;
-        //cout << "test2.1" << endl;
         while(obj->hasNextTransformation()) {
-            //cout << "test3" << endl; // @debug
+            cout << "test3" << endl; // @debug
             auto transformation = obj->nextTransformation();
             //cout << "test4" << endl; // @debug
             if (transformation.getType() == TransformationType::SCALE) {
@@ -108,14 +107,27 @@ void OpenGLPanel::paintGL() {
                        TransformationType::TRANSLATE) {
                 glTranslatef(transformation.getData1(),
                              transformation.getData2(), 0);
+            } else if (transformation.getType() ==
+                       TransformationType::REFLECTION) {
+                glTranslatef((this->width()/2.0), (this->height()/2.0), 0);
+                glRef(transformation.getData1(),
+                             transformation.getData2());
+                glTranslatef(-(this->width()/2.0), -(this->height()/2.0), 0);
+            } else if (transformation.getType() ==
+                       TransformationType::SHEAR) {
+                glTranslatef((this->width()/2.0), (this->height()/2.0), 0);
+                glShear(transformation.getData1(), transformation.getData2());
+                glTranslatef(-(this->width()/2.0), -(this->height()/2.0), 0);
             }
+
         }
+        obj->resetIndexes();
         //cout << "Finalizou trans" << endl; // @debug
 
         this->drawPrimitives(*obj);
         glPopMatrix();
     }
-    this->objects.resetIndexing();
+    //glLoadIdentity();
     glScalef(this->zoom, this->zoom, 1.0);
     //pop();
 }
@@ -158,7 +170,6 @@ void OpenGLPanel::rotate(float angle) {
     this->objects.addRotation(angle);
     update();
 }
-
 void OpenGLPanel::translate(double x, double y)
 {
     this->objects.getSelected()->addTranslation(x, y);
@@ -168,6 +179,18 @@ void OpenGLPanel::translate(double x, double y)
 void OpenGLPanel::scale(double x, double y)
 {
     this->objects.getSelected()->addScale(x, y);
+    update();
+}
+
+void OpenGLPanel::shear(double b, double a)
+{
+    this->objects.addShear(b, a);
+    update();
+}
+
+void OpenGLPanel::reflection(double x, double y)
+{
+    this->objects.addReflection(x, y);
     update();
 }
 
@@ -183,6 +206,30 @@ void OpenGLPanel::drawObject(int sides) {
 //    this->objects.push_back(new PaintObject(this->lastId++, sides, this->color));
     this->objects.addObject(new PaintObject(sides, color));
     update();
+}
+
+
+
+void OpenGLPanel::glShear(double b, double a)
+{
+    GLfloat m[16] = {
+        1.0f, (GLfloat)b, 0.0f, 0.0f,
+        (GLfloat)a, 1.0f, 0.0f, 0.0f,
+        0.0f, 0.0f, 1.0f, 0.0f,
+        0.0f, 0.0f, 0.0f, 1.0f
+    };
+    glMultMatrixf(m);
+}
+
+void OpenGLPanel::glRef(double x, double y)
+{
+    GLfloat m[16] = {
+        (GLfloat)x, 0.0f, 0.0f, 0.0f,
+        0.0f, (GLfloat)y, 0.0f, 0.0f,
+        0.0f, 0.0f, 1.0f, 0.0f,
+        0.0f, 0.0f, 0.0f, 1.0f
+    };
+    glMultMatrixf(m);
 }
 
 void OpenGLPanel::drawPrimitives(const PaintObject &obj)

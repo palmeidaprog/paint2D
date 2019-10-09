@@ -37,10 +37,25 @@ void PaintObject::addTranslation(double x, double y)
     this->resetIndexes();
 }
 
+void PaintObject::addShear(double b, double a)
+{
+    this->transformations.push_back(new Transformation(
+                                        TransformationType::SHEAR, b, a));
+    this->resetIndexes();
+
+}
+
 void PaintObject::addRotation(double angle)
 {
     this->transformations.push_back(new Transformation(
                                             TransformationType::ROTATE, angle, 0));
+    this->resetIndexes();
+}
+
+void PaintObject::addReflection(double x, double y)
+{
+    this->transformations.push_back(new Transformation(
+                                        TransformationType::REFLECTION, x, y));
     this->resetIndexes();
 }
 
@@ -66,5 +81,6 @@ void PaintObject::resetIndexes()
 {
     //this->points_index = 0;
     this->transformation_index = this->transformations.size()-1;
+    //cout << "New trans:" << this->transformation_index << endl;
 }
 

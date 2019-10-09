@@ -97,6 +97,18 @@ MainWindow::MainWindow(QWidget *parent) :
     this->meshBtn = ui->meshBtn;
     connect(this->meshBtn, SIGNAL(clicked(bool)), this,
             SLOT(updateMesh()));
+
+    this->aEdit = ui->aEdit;
+    this->bEdit = ui->bEdit;
+    this->shearBtn = ui->shearBtn;
+    connect(this->shearBtn, SIGNAL(clicked(bool)), this,
+            SLOT(shear()));
+
+    this->xCheck = ui->xCheck;
+    this->yCheck = ui->yCheck;
+    this->reflectBtn = ui->reflectBtn;
+    connect(this->reflectBtn, SIGNAL(clicked(bool)), this,
+            SLOT(reflection()));
 }
 
 MainWindow::~MainWindow() {
@@ -181,6 +193,17 @@ void MainWindow::zoomIn()
 void MainWindow::zoomOut()
 {
     this->panel->setZoom(0.9);
+}
+
+void MainWindow::shear()
+{
+    this->panel->shear(bEdit->text().toDouble(), aEdit->text().toDouble());
+}
+
+void MainWindow::reflection()
+{
+    this->panel->reflection(this->xCheck->isChecked() ? -1 : 1,
+                            this->yCheck->isChecked() ? -1 : 1);
 }
 
 void MainWindow::openObject()
