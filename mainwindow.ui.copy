@@ -17,8 +17,8 @@
    <widget class="OpenGLPanel" name="panel">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>0</y>
+      <x>10</x>
+      <y>10</y>
       <width>721</width>
       <height>691</height>
      </rect>
@@ -106,12 +106,12 @@
     <number>2</number>
    </attribute>
    <widget class="QWidget" name="dockWidgetContents_3">
-    <widget class="QTabWidget" name="tab_12">
+    <widget class="QTabWidget" name="tabWidget">
      <property name="geometry">
       <rect>
        <x>20</x>
        <y>10</y>
-       <width>271</width>
+       <width>251</width>
        <height>271</height>
       </rect>
      </property>
@@ -122,7 +122,7 @@
       </sizepolicy>
      </property>
      <property name="currentIndex">
-      <number>3</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="tab_2">
       <attribute name="title">
@@ -350,7 +350,7 @@
       <widget class="QWidget" name="verticalLayoutWidget_6">
        <property name="geometry">
         <rect>
-         <x>50</x>
+         <x>40</x>
          <y>10</y>
          <width>160</width>
          <height>80</height>
@@ -360,15 +360,15 @@
         <property name="spacing">
          <number>10</number>
         </property>
-        <item>
-         <widget class="QDial" name="dialRotation"/>
-        </item>
         <item alignment="Qt::AlignHCenter">
          <widget class="QLabel" name="label_5">
           <property name="text">
            <string>Rotate</string>
           </property>
          </widget>
+        </item>
+        <item>
+         <widget class="QDial" name="dialRotation"/>
         </item>
        </layout>
       </widget>
@@ -377,7 +377,7 @@
         <rect>
          <x>30</x>
          <y>110</y>
-         <width>181</width>
+         <width>191</width>
          <height>128</height>
         </rect>
        </property>
@@ -476,7 +476,7 @@
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_2">
           <item>
-           <widget class="QToolButton" name="scaleUpBtn">
+           <widget class="QToolButton" name="scale_zoomIn_btn">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
               <horstretch>0</horstretch>
@@ -505,7 +505,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QToolButton" name="scaleDownBtn">
+           <widget class="QToolButton" name="scale_zoomOut_btn">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
               <horstretch>0</horstretch>
@@ -564,112 +564,6 @@
            </widget>
           </item>
          </layout>
-        </item>
-       </layout>
-      </widget>
-     </widget>
-     <widget class="QWidget" name="tab_11">
-      <attribute name="title">
-       <string>Shear</string>
-      </attribute>
-      <widget class="QWidget" name="verticalLayoutWidget_19">
-       <property name="geometry">
-        <rect>
-         <x>20</x>
-         <y>10</y>
-         <width>231</width>
-         <height>123</height>
-        </rect>
-       </property>
-       <layout class="QVBoxLayout" name="shearLayout">
-        <item>
-         <widget class="QLabel" name="label_19">
-          <property name="text">
-           <string>Shear in:</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <layout class="QHBoxLayout" name="horizontalLayout_6">
-          <item>
-           <widget class="QLabel" name="label_20">
-            <property name="text">
-             <string>A (y):</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLineEdit" name="aEdit"/>
-          </item>
-         </layout>
-        </item>
-        <item>
-         <layout class="QHBoxLayout" name="shearLayoutAB">
-          <item>
-           <widget class="QLabel" name="label_21">
-            <property name="text">
-             <string>B (x):</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLineEdit" name="bEdit"/>
-          </item>
-         </layout>
-        </item>
-        <item>
-         <widget class="QPushButton" name="shearBtn">
-          <property name="text">
-           <string>Shear it Up!</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </widget>
-      <widget class="QWidget" name="verticalLayoutWidget_3">
-       <property name="geometry">
-        <rect>
-         <x>20</x>
-         <y>140</y>
-         <width>231</width>
-         <height>87</height>
-        </rect>
-       </property>
-       <layout class="QVBoxLayout" name="reflexLayout">
-        <item>
-         <widget class="QLabel" name="label_18">
-          <property name="text">
-           <string>Reflect on:</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <layout class="QHBoxLayout" name="horizontalLayout_7">
-          <item>
-           <widget class="QCheckBox" name="xCheck">
-            <property name="text">
-             <string>X</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QCheckBox" name="yCheck">
-            <property name="text">
-             <string>Y</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </item>
-        <item>
-         <widget class="QPushButton" name="reflectBtn">
-          <property name="text">
-           <string>Let's Reflect!</string>
-          </property>
-          <property name="default">
-           <bool>true</bool>
-          </property>
-         </widget>
         </item>
        </layout>
       </widget>
@@ -829,7 +723,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QToolButton" name="meshBtn">
+       <widget class="QToolButton" name="move_btn">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
           <horstretch>0</horstretch>
@@ -847,7 +741,7 @@
         </property>
         <property name="icon">
          <iconset resource="images.qrc">
-          <normaloff>:/images/malha.jpg</normaloff>:/images/malha.jpg</iconset>
+          <normaloff>:/images/setamover.png</normaloff>:/images/setamover.png</iconset>
         </property>
         <property name="iconSize">
          <size>
