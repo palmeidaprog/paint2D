@@ -14,9 +14,20 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    openglpanel.cpp
+    openglpanel.cpp \
+    paintobject.cpp \
+    transformation.cpp \
+    objectscontroller.cpp
 
 HEADERS  += mainwindow.h \
-    openglpanel.h
+    openglpanel.h \
+    paintobject.h \
+    transformationtype.h \
+    transformation.h \
+    objectscontroller.h
 
 FORMS    += mainwindow.ui
+
+RESOURCES += \
+    images.qrc
+
