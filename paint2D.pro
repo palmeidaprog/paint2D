@@ -17,14 +17,16 @@ SOURCES += main.cpp\
     openglpanel.cpp \
     paintobject.cpp \
     transformation.cpp \
-    objectscontroller.cpp
+    objectscontroller.cpp \
+    camera.cpp
 
 HEADERS  += mainwindow.h \
     openglpanel.h \
     paintobject.h \
     transformationtype.h \
     transformation.h \
-    objectscontroller.h
+    objectscontroller.h \
+    camera.h
 
 FORMS    += mainwindow.ui
 

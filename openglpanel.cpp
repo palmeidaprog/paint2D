@@ -4,8 +4,9 @@
 OpenGLPanel::OpenGLPanel(QWidget *parent) : QOpenGLWidget(parent),
     objects(ObjectsController::getInstance()), meshX(40), meshY(40),sides(3),
     z(-1), radius(2.0f), color(Qt::cyan), smallerX(0), biggerX(10),
-    smallerY(0), biggerY(10), angleRot(0.0), zoom(1.0) {
-
+    smallerY(0), biggerY(10), angleRot(0.0), zoom(1.0),
+    camera(make_unique<Camera>()) {
+     glEnable (GL_NORMALIZE);
 }
 
 OpenGLPanel::~OpenGLPanel()
@@ -14,49 +15,74 @@ OpenGLPanel::~OpenGLPanel()
 }
 
 void OpenGLPanel::resizeGL(int w, int h) {
-    //double smallerX = 0, biggerX = 10, smallerY = 0, biggerY = 10;
-    glViewport( 0, 0, (GLint)w, (GLint)h );
-
+    glViewport(0, 0, (GLint)w, (GLint)h);
+    GLfloat fAspect = (GLint)w/(GLint)h;
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    glOrtho(-1,1,-1,1, -1, 1);
 
-//    if (w > h) {
-//        h = h?h:1;
-//        double newW = (biggerX - smallerX) * w / h;
-//        double difW = newW - (biggerX - smallerX);
-//        smallerX = 0.0 - difW / 2.0;
-//        biggerX = 10 + difW / 2.0;
-//    } else {
-//        w = w ? w : 1;
-//        double newH = (biggerY - smallerY) * h / w;
-//        double diffH = newH - (biggerY - smallerY);
-//        smallerY = 0.0 - diffH / 2.0;
-//        biggerY = 10 + diffH / 2.0;
-//    }
-
-    //glOrtho(smallerX, biggerX, smallerY, biggerY, -1, 1);
-    glOrtho(0, w, 0, h, -1, 1);
-    //glScalef(0.1, 0.1, 1);
-    //glOrtho(-1,w,-1,h, -1, 1);
-    //glRotatef(0.45, 0, 0, 1);
+    this->perspectiveGL(45,fAspect,0.1,500);
+    //this->
     glMatrixMode(GL_MODELVIEW);
-    //glMatrixMode(GL_PROJECTION);
-    //glLoadIdentity();
     glLoadIdentity();
+
+//    glViewport( 0, 0, (GLint)w, (GLint)h );
+
+//    glMatrixMode(GL_PROJECTION);
+//    glLoadIdentity();
+//    glOrtho(-1,1,-1,1, -1, 1);
+
+//    glOrtho(0, w, 0, h, -1, 1);
+//    glMatrixMode(GL_MODELVIEW);
+//    glLoadIdentity();
 
 
 }
 
+void OpenGLPanel::perspectiveGL(GLdouble fovY, GLdouble aspect,
+                                GLdouble zNear, GLdouble zFar ) {
+    constexpr GLdouble pi = 3.1415926535897932384626433832795;
+    GLdouble fW, fH;
+
+    //fH = tan( (fovY / 2) / 180 * pi ) * zNear;
+    fH = tan( fovY / 360 * pi ) * zNear;
+    fW = fH * aspect;
+
+    glFrustum(-fW, fW, -fH, fH, zNear, zFar);
+}
 
 
 void OpenGLPanel::initializeGL() {
+    GLfloat specLight[4]={1.0, 1.0, 1.0, 1.0};
+    GLfloat positionLight[4]={30.0, 30.0, 30.0, 1.0};
+    GLfloat ambientLight[4]={1.2,1.2,1.2,2.0};
+    GLfloat difLight[4]={0.7,0.7,0.7,1.0};
+    GLfloat spec[4]={1.0,1.0,1.0,1.0};
+    GLint specMaterial = 60;
+
     initializeOpenGLFunctions();
-    glShadeModel(GL_SMOOTH);
-    glClearColor(1.0, 1, 1, 1);
+
+    glMaterialfv(GL_FRONT,GL_SPECULAR, spec);
+    glMateriali(GL_FRONT,GL_SHININESS, specMaterial);
+    glLightModelfv(GL_LIGHT_MODEL_AMBIENT, ambientLight);
+
+    glLightfv(GL_LIGHT0, GL_AMBIENT, ambientLight);
+    glLightfv(GL_LIGHT0, GL_DIFFUSE, difLight);
+    glLightfv(GL_LIGHT0, GL_SPECULAR, specLight);
+    glLightfv(GL_LIGHT0, GL_POSITION, positionLight);
+    glEnable(GL_COLOR_MATERIAL);
+    glEnable(GL_LIGHTING);
+    glEnable(GL_LIGHT0);
     glEnable(GL_DEPTH_TEST);
     glDepthFunc(GL_LEQUAL);
+
     glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
+
+
+//    glShadeModel(GL_SMOOTH);
+//    glClearColor(1.0, 1, 1, 1);
+//    glEnable(GL_DEPTH_TEST);
+//    glDepthFunc(GL_LEQUAL);
+//    glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
     update();
 }
 
@@ -65,7 +91,9 @@ void OpenGLPanel::paintGL() {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     glLoadIdentity();
-    //glTranslated(10.0, 10.0, 0.0);
+    glTranslated(.01,.01,0.0);
+    gluLookAt(camera->getX1(),camera->getY1(),camera->getZ1(),
+              camera->getX2(),camera->getY2(),camera->getZ2(),0,1,0);
     this->initializeMesh(meshX, meshY);
     this->objects.resetIndexing();
 
@@ -232,36 +260,41 @@ void OpenGLPanel::glRef(double x, double y)
     glMultMatrixf(m);
 }
 
+
 void OpenGLPanel::drawPrimitives(const PaintObject &obj)
 {
     glLineWidth(2);
     //cout << "Printa primitivos" << endl; // @debug
     glColor4f(obj.getColor().redF(), obj.getColor().greenF(),
               obj.getColor().blueF(), obj.getColor().alphaF());
-    double x0 = this->width()/2.0;
-    double y0 = this->height()/2.0;
-    double s = obj.numberOfSides() << 1;
+    glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
 
-    glBegin(GL_POLYGON);
+//    glEnable(GL_BLEND);
 
-    glVertex2f(x0, y0);
-    for(int i = 1; i < s; i++) {
-        glVertex2f(this->width()/10.0 * cos((i<<2)*M_PI/s) + x0,
-                   this->height()/10.0 * sin((i<<2)*M_PI/s) + y0);
-    }
-    glEnd();
+//    double x0 = this->width()/2.0;
+//    double y0 = this->height()/2.0;
+//    double s = obj.numberOfSides() << 1;
 
-    if (this->objects.getSelected()->getId() == obj.getId()) {
-        glBegin(GL_LINE_STRIP);
+//    glBegin(GL_POLYGON);
 
-        glColor4f(0, 0 , 0,1);
-        //glVertex2f(x0, y0);
-        for(int i = 1; i < s; i++) {
-            glVertex2f(this->width()/10.0 * cos((i<<2)*M_PI/s) + x0,
-                       this->height()/10.0 * sin((i<<2)*M_PI/s) + y0);
-        }
-        glEnd();
-    }
+//    glVertex2f(x0, y0);
+//    for(int i = 1; i < s; i++) {
+//        glVertex2f(this->width()/10.0 * cos((i<<2)*M_PI/s) + x0,
+//                   this->height()/10.0 * sin((i<<2)*M_PI/s) + y0);
+//    }
+//    glEnd();
+
+//    if (this->objects.getSelected()->getId() == obj.getId()) {
+//        glBegin(GL_LINE_STRIP);
+
+//        glColor4f(0, 0 , 0,1);
+//        //glVertex2f(x0, y0);
+//        for(int i = 1; i < s; i++) {
+//            glVertex2f(this->width()/10.0 * cos((i<<2)*M_PI/s) + x0,
+//                       this->height()/10.0 * sin((i<<2)*M_PI/s) + y0);
+//        }
+//        glEnd();
+//    }
     //cout << "Fim dos primitivos " << endl; // @debug
 }
 
@@ -323,33 +356,56 @@ void OpenGLPanel::rotationChanged(int initial) noexcept {
 //    //update();
 //}
 
-
 void OpenGLPanel::initializeMesh(int w, int h) {
-    int increment = this->height()/h;
-    QColor gray = Qt::lightGray;
-    cout << this->height() << "x";
-    glLineWidth(1);
-    for (int i = 0; i <= this->height() + increment* 5; i += increment) {
-        glBegin(GL_LINES);
-        glColor4f(gray.redF(), gray.greenF(), gray.blueF(), gray.alphaF());
-        glVertex2i(i, 0);
-        glVertex2i(i, this->height());
-        glEnd();
+    glColor3f(0,0,0);
+    glLineWidth(0.5);
+    glLineStipple(2, 0xAAAA);
+    glEnable(GL_LINE_STIPPLE);
+    glBegin(GL_LINES);
+    for(int i = 0; i <= 150; i++){
+        glVertex3i(0, i, 0);//X e Y
+        glVertex3i( 0, i, 150);
+        glVertex3i( 0, 0, i);
+        glVertex3i( 0, 150, i);
+        glVertex3i( i, 0, 0);//Y e Z
+        glVertex3i( i, 150, 0);
+        glVertex3i( 0, i,0);
+        glVertex3i( 150, i,0);
+        glVertex3i( 0, 0, i);//X e Z
+        glVertex3i( 150, 0, i);
+        glVertex3i( i,0, 0);
+        glVertex3i( i,0, 150);
     }
-
-    increment = this->width()/w;
-    cout << this->width() << endl;
-    for (int i = 0; i <= this->width() + increment* 5; i += increment) {
-        glBegin((GL_LINES));
-        glColor4f(gray.redF(), gray.greenF(), gray.blueF(), gray.alphaF());
-        glVertex2i(0, i);
-        glVertex2i(this->width(), i);
-        glEnd();
-    }
-
-    //glFlush();
-    //update();
+    glEnd();
 }
+
+
+//void OpenGLPanel::initializeMesh(int w, int h) {
+//    int increment = this->height()/h;
+//    QColor gray = Qt::lightGray;
+//    cout << this->height() << "x";
+//    glLineWidth(1);
+//    for (int i = 0; i <= this->height() + increment* 5; i += increment) {
+//        glBegin(GL_LINES);
+//        glColor4f(gray.redF(), gray.greenF(), gray.blueF(), gray.alphaF());
+//        glVertex2i(i, 0);
+//        glVertex2i(i, this->height());
+//        glEnd();
+//    }
+
+//    increment = this->width()/w;
+//    cout << this->width() << endl;
+//    for (int i = 0; i <= this->width() + increment* 5; i += increment) {
+//        glBegin((GL_LINES));
+//        glColor4f(gray.redF(), gray.greenF(), gray.blueF(), gray.alphaF());
+//        glVertex2i(0, i);
+//        glVertex2i(this->width(), i);
+//        glEnd();
+//    }
+
+//    //glFlush();
+//    //update();
+//}
 
 void OpenGLPanel::changeColors(int color) {
     switch(color) {

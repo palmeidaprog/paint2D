@@ -10,6 +10,7 @@
 //#include <OpenGL/gl.h>
 //#include <OpenGL/OpenGL.h>
 #include <OpenGL.h>
+#include <memory>
 #include <gl.h>
 #include <cmath>
 #include "paintobject.h"
@@ -18,9 +19,11 @@
 #include <QComboBox>
 #include "mainwindow.h"
 #include "objectscontroller.h"
+#include "camera.h"
 
 using std::cout;
 using std::endl;
+using std::unique_ptr;
 
 //namespace Ui {
 //class OpenGLPanel;
@@ -39,6 +42,7 @@ Q_OBJECT
     static constexpr int MIN_SIDES = 3;
     ObjectsController &objects;
     double zoom;
+    unique_ptr<Camera> camera;
 
 public:
     explicit OpenGLPanel(QWidget *parent = 0);
@@ -75,8 +79,6 @@ public slots:
     void rotationChanged(int initial) noexcept;
     void drawObject(int sides);
 
-
-
     //void rotate()
 
     inline const QColor &getColor() const noexcept {
@@ -87,6 +89,8 @@ public slots:
 private:
 
     void drawPrimitives(const PaintObject &obj);
+    void perspectiveGL(GLdouble fovY, GLdouble aspect, GLdouble zNear,
+                       GLdouble zFar);
     void initializeMesh(int w, int h);
     void pop();
 };
