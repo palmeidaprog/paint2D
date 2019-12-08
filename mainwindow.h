@@ -61,6 +61,7 @@ public slots:
     void cubeClicked();
     void cylinderClicked();
     void sphereClicked();
+    void coneClicked();
     void goTranslateClicked();
     void rightTranslate();
     void topTranslate();

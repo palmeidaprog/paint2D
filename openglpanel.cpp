@@ -21,7 +21,7 @@ void OpenGLPanel::resizeGL(int w, int h) {
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
 
-    this->perspectiveGL(45,fAspect,0.1,500);
+    //this->perspectiveGL(45,fAspect,0.1,500);
     //this->
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
@@ -117,7 +117,7 @@ void OpenGLPanel::initializeGL() {
 
 
     initializeOpenGLFunctions();
-    glEnable (GL_NORMALIZE);
+    //glEnable (GL_NORMALIZE);
 
     glMaterialfv(GL_FRONT,GL_SPECULAR, spec);
     glMateriali(GL_FRONT,GL_SHININESS, specMaterial);
@@ -141,7 +141,7 @@ void OpenGLPanel::initializeGL() {
 //    glEnable(GL_DEPTH_TEST);
 //    glDepthFunc(GL_LEQUAL);
 //    glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
-    //update();
+    update();
 }
 
 void OpenGLPanel::paintGL() {
@@ -149,11 +149,11 @@ void OpenGLPanel::paintGL() {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     glLoadIdentity();
-    glTranslated(.01,.01,0.0);
+    //glTranslated(.01,.01,0.0);
     Vector3 eye = camera->getEye();
     Vector3 target = camera->getTarget();
     Vector3 upDir = camera->getUpDir();
-    this->lookAtGL(eye, target, upDir);
+    //this->lookAtGL(eye, target, upDir);
     this->initializeMesh(meshX, meshY);
     this->objects.resetIndexing();
 

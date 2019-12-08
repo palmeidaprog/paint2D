@@ -159,6 +159,12 @@ void MainWindow::cubeClicked()
     this->createListEntry();
 }
 
+void MainWindow::coneClicked()
+{
+    panel->drawObject(2);
+    this->createListEntry();
+}
+
 void MainWindow::cylinderClicked()
 {
     panel->drawObject(5);
