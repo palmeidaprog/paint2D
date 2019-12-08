@@ -1,6 +1,7 @@
 #ifndef CAMERA_H
 #define CAMERA_H
 
+#include <vector3.h>
 
 class Camera
 {
@@ -9,6 +10,18 @@ class Camera
 public:
     Camera() noexcept;
     virtual ~Camera();
+
+    inline Vector3 getEye() {
+        return Vector3(this->x1, this->y1, this->z1);
+    }
+
+    inline Vector3 getTarget() {
+        return Vector3(this->x2, this->y2, this->z2);
+    }
+
+    inline Vector3 getUpDir() {
+        return Vector3(0, 1, 0);
+    }
 
 
     inline void setX1(int x) noexcept {

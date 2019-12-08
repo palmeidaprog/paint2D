@@ -38,8 +38,9 @@ private:
     QDoubleSpinBox *doubleSpinBoxRadius;
     QComboBox *colorsCombo;
     QCheckBox *xCheck, *yCheck;
-    QToolButton *colorBtn, *rotateBtn, *makeTriangleBtn, *makeSquareBtn,
-    *makePolygonBtn, *upBtn, *downBtn, *rightBtn, *leftBtn, *zoomInBtn,
+    QToolButton *colorBtn, *rotateBtn, *makeConeBtn, *makeCubeBtn,
+    *makeCylinderBtn, *makeSphereBtn, *makePyramidBtn, //*makePolygonBtn,
+    *upBtn, *downBtn, *rightBtn, *leftBtn, *zoomInBtn,
     *zoomOutBtn, *scaleUpBtn, *scaleDownBtn, *meshBtn;
     QSlider *scaleSlider;
     QDial *dialRotation;
@@ -56,9 +57,10 @@ public slots:
     void changeColorSlot();
     void sliderChange(int i0, int i1);
     void rotateEvent();
-    void triangleClicked();
-    void squareClicked();
-    void polygonClicked();
+    void pyramidClicked();
+    void cubeClicked();
+    void cylinderClicked();
+    void sphereClicked();
     void goTranslateClicked();
     void rightTranslate();
     void topTranslate();

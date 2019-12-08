@@ -12,7 +12,6 @@ PaintObject::~PaintObject() noexcept {
     for (auto transformation : this->transformations) {
         delete transformation;
     }
-
 }
 
 

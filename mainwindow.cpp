@@ -16,9 +16,11 @@ MainWindow::MainWindow(QWidget *parent) :
     dialRotation = ui->dialRotation;
     this->angleRotEdit = ui->angleRotEdit;
     this->rotateBtn = ui->rotateBtn;
-    this->makePolygonBtn = ui->makePolygonBtn;
-    this->makeSquareBtn = ui->makeSquareBtn;
-    this->makeTriangleBtn = ui->makeTriangleBtn;
+    this->makeConeBtn = ui->makeConeBtn;
+    this->makeCubeBtn = ui->makeCubeBtn;
+    this->makeCylinderBtn = ui->makeCylinderBtn;
+    this->makeSphereBtn = ui->makeSphereBtn;
+    this->makePyramidBtn = ui->makePyramidBtn;
     this->xEdit = ui->xEdit;
     this->yEdit = ui->yEdit;
     this->goTransBtn = ui->goTransBtn;
@@ -37,12 +39,16 @@ MainWindow::MainWindow(QWidget *parent) :
             SLOT(rotationChanged(int)));
     connect(this->rotateBtn, SIGNAL(clicked(bool)), this,
             SLOT(rotateEvent(void)));
-    connect(this->makeTriangleBtn, SIGNAL(clicked(bool)), this,
-            SLOT(triangleClicked()));
-    connect(this->makeSquareBtn, SIGNAL(clicked(bool)), this,
-            SLOT(squareClicked()));
-    connect(this->makePolygonBtn, SIGNAL(clicked(bool)), this,
-            SLOT(polygonClicked()));
+
+    connect(this->makeConeBtn, SIGNAL(clicked(bool)), this,
+            SLOT(coneClicked()));
+    connect(this->makeCubeBtn, SIGNAL(clicked(bool)), this,
+            SLOT(cubeClicked()));
+    connect(this->makeCylinderBtn, SIGNAL(clicked(bool)), this,
+            SLOT(cylinderClicked()));
+    connect(this->makeSphereBtn, SIGNAL(clicked(bool)), this,
+            SLOT(sphereClicked()));
+
 
     // translate
     connect(this->goTransBtn, SIGNAL(clicked(bool)), this,
@@ -141,19 +147,26 @@ void MainWindow::rotateEvent() {
     this->panel->rotate(this->angleRotEdit->text().toFloat());
 }
 
-void MainWindow::triangleClicked()
+void MainWindow::pyramidClicked()
 {
     panel->drawObject(3);
     this->createListEntry();
 }
 
-void MainWindow::squareClicked()
+void MainWindow::cubeClicked()
 {
     panel->drawObject(4);
     this->createListEntry();
 }
 
-void MainWindow::polygonClicked()
+void MainWindow::cylinderClicked()
+{
+    panel->drawObject(5);
+    this->createListEntry();
+}
+
+
+void MainWindow::sphereClicked()
 {
     panel->drawObject(this->spinBoxSides->text().toInt());
     this->createListEntry();

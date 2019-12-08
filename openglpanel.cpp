@@ -5,8 +5,9 @@ OpenGLPanel::OpenGLPanel(QWidget *parent) : QOpenGLWidget(parent),
     objects(ObjectsController::getInstance()), meshX(40), meshY(40),sides(3),
     z(-1), radius(2.0f), color(Qt::cyan), smallerX(0), biggerX(10),
     smallerY(0), biggerY(10), angleRot(0.0), zoom(1.0),
-    camera(make_unique<Camera>()) {
-     glEnable (GL_NORMALIZE);
+    camera(unique_ptr<Camera>(new Camera())) {
+    //this->initializeGL();
+    //glEnable (GL_NORMALIZE);
 }
 
 OpenGLPanel::~OpenGLPanel()
@@ -38,6 +39,61 @@ void OpenGLPanel::resizeGL(int w, int h) {
 
 }
 
+Matrix4 OpenGLPanel::lookAtGL(Vector3& eye, Vector3& target, Vector3& upDir)
+{
+    // compute the forward vector from target to eye
+    Vector3 forward = eye - target;
+    forward.normalize();                 // make unit length
+
+    // compute the left vector
+    Vector3 left = upDir.cross(forward); // cross product
+    left.normalize();
+
+    // recompute the orthonormal up vector
+    Vector3 up = forward.cross(left);    // cross product
+
+    // init 4x4 matrix
+    Matrix4 matrix;
+    matrix.identity();
+
+    // set rotation part, inverse rotation matrix: M^-1 = M^T for Euclidean transform
+    matrix[0] = left.x;
+    matrix[4] = left.y;
+    matrix[8] = left.z;
+    matrix[1] = up.x;
+    matrix[5] = up.y;
+    matrix[9] = up.z;
+    matrix[2] = forward.x;
+    matrix[6] = forward.y;
+    matrix[10]= forward.z;
+
+    // set translation part
+    matrix[12]= -left.x * eye.x - left.y * eye.y - left.z * eye.z;
+    matrix[13]= -up.x * eye.x - up.y * eye.y - up.z * eye.z;
+    matrix[14]= -forward.x * eye.x - forward.y * eye.y - forward.z * eye.z;
+
+    return matrix;
+}
+
+//void OpenGLPanel::lookAtGL(GLfloat eyeX, GLfloat eyeY, GLfloat eyeZ,
+//                           GLfloat lookAtX, GLfloat lookAtY, GLfloat lookAtZ,
+//                           GLfloat upX, GLfloat upY, GLfloat upZ) {
+//    Vector3f x, y, z;
+//    z = Vector3f(eyeX-lookAtX, eyeY-lookAtY, eyeZ-lookAtZ).normalize();
+//    y = Vector3f(upX, upY, upZ);
+//    x = y ^ z; // <------------------------------ Marcio, OU EXCLUSIVO :)
+//    y = z ^ x; // <------------------------------ Marcio, OU EXCLUSIVO :)
+//    x = x.normalize();
+//    y = y.normalize();
+//    // mat is given transposed so OpenGL can handle it.
+//    Matrix4x4 mat (new GLfloat[16]
+//                     {x.getX(), y.getX(),   z.getX(),   0,
+//                     x.getY(),  y.getY(),   z.getY(),   0,
+//                     x.getZ(),  y.getZ(),   z.getZ(),   0,
+//                     -eyeX,     -eyeY,      -eyeZ,      1});
+//    glMultMatrixf(mat.getComponents());
+//}
+
 void OpenGLPanel::perspectiveGL(GLdouble fovY, GLdouble aspect,
                                 GLdouble zNear, GLdouble zFar ) {
     constexpr GLdouble pi = 3.1415926535897932384626433832795;
@@ -59,7 +115,9 @@ void OpenGLPanel::initializeGL() {
     GLfloat spec[4]={1.0,1.0,1.0,1.0};
     GLint specMaterial = 60;
 
+
     initializeOpenGLFunctions();
+    glEnable (GL_NORMALIZE);
 
     glMaterialfv(GL_FRONT,GL_SPECULAR, spec);
     glMateriali(GL_FRONT,GL_SHININESS, specMaterial);
@@ -83,7 +141,7 @@ void OpenGLPanel::initializeGL() {
 //    glEnable(GL_DEPTH_TEST);
 //    glDepthFunc(GL_LEQUAL);
 //    glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
-    update();
+    //update();
 }
 
 void OpenGLPanel::paintGL() {
@@ -92,8 +150,10 @@ void OpenGLPanel::paintGL() {
 
     glLoadIdentity();
     glTranslated(.01,.01,0.0);
-    gluLookAt(camera->getX1(),camera->getY1(),camera->getZ1(),
-              camera->getX2(),camera->getY2(),camera->getZ2(),0,1,0);
+    Vector3 eye = camera->getEye();
+    Vector3 target = camera->getTarget();
+    Vector3 upDir = camera->getUpDir();
+    this->lookAtGL(eye, target, upDir);
     this->initializeMesh(meshX, meshY);
     this->objects.resetIndexing();
 
@@ -269,6 +329,10 @@ void OpenGLPanel::drawPrimitives(const PaintObject &obj)
               obj.getColor().blueF(), obj.getColor().alphaF());
     glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
 
+    if (obj.numberOfSides() == 3) {
+        this->drawTriangle();
+    }
+
 //    glEnable(GL_BLEND);
 
 //    double x0 = this->width()/2.0;
@@ -441,6 +505,26 @@ void OpenGLPanel::changeColors(int color) {
         break;
     }
     update();
+}
+
+void OpenGLPanel::drawTriangle() {
+    glBegin(GL_TRIANGLES);
+    glVertex3f(0.5,1,0.5);
+    glVertex3f(1,0,0);
+    glVertex3f(0,0,0);
+
+    glVertex3f(0.5,1,0.5);
+    glVertex3f(0,0,1);
+    glVertex3f(0,0,0);
+
+    glVertex3f(0.5,1,0.5);
+    glVertex3f(1,0,1);
+    glVertex3f(0,0,1);
+
+    glVertex3f(0.5,1,0.5);
+    glVertex3f(1,0,1);
+    glVertex3f(1,0,0);
+    glEnd();
 }
 
 

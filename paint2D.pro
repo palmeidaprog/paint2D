@@ -18,7 +18,10 @@ SOURCES += main.cpp\
     paintobject.cpp \
     transformation.cpp \
     objectscontroller.cpp \
-    camera.cpp
+    camera.cpp \
+    vector3.cpp \
+    matrix4.cpp \
+    vector4.cpp
 
 HEADERS  += mainwindow.h \
     openglpanel.h \
@@ -26,9 +29,13 @@ HEADERS  += mainwindow.h \
     transformationtype.h \
     transformation.h \
     objectscontroller.h \
-    camera.h
+    camera.h \
+    vector3.h \
+    matrix4.h \
+    vector4.h
 
 FORMS    += mainwindow.ui
+
 
 RESOURCES += \
     images.qrc

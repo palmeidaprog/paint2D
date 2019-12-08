@@ -7,11 +7,17 @@
 #include <QMainWindow>
 #include <QOpenGLWidget>
 #include <QOpenGLFunctions>
-//#include <OpenGL/gl.h>
-//#include <OpenGL/OpenGL.h>
+
+// Else is linux
+#ifdef __APPLE__
 #include <OpenGL.h>
-#include <memory>
 #include <gl.h>
+#else
+#include <GL/gl.h>
+#include <GL/glu.h>
+#endif
+
+#include <memory>
 #include <cmath>
 #include "paintobject.h"
 #include "transformation.h"
@@ -20,6 +26,8 @@
 #include "mainwindow.h"
 #include "objectscontroller.h"
 #include "camera.h"
+#include "vector3.h"
+#include "matrix4.h"
 
 using std::cout;
 using std::endl;
@@ -87,10 +95,11 @@ public slots:
 
 
 private:
-
     void drawPrimitives(const PaintObject &obj);
+    void drawTriangle();
     void perspectiveGL(GLdouble fovY, GLdouble aspect, GLdouble zNear,
                        GLdouble zFar);
+    Matrix4 lookAtGL(Vector3& eye, Vector3& target, Vector3& upDir);
     void initializeMesh(int w, int h);
     void pop();
 };
