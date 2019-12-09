@@ -29,11 +29,11 @@ public:
 
     bool hasNextTransformation();
     Transformation &nextTransformation();
-    void addTranslation(double x, double y);
+    void addTranslation(double x, double y, double z);
     void addShear(double b, double a);
-    void addRotation(double angle);
+    void addRotation(double angle, double axis);
     void addReflection(double x, double y);
-    void addScale(double x, double y);
+    void addScale(double x, double y, double z);
     PaintObject &setSelected();
     void setColor(const QColor &color);
     const QColor &getColor() const;

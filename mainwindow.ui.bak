@@ -7,11 +7,11 @@
     <x>0</x>
     <y>0</y>
     <width>1124</width>
-    <height>848</height>
+    <height>761</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Paint3D</string>
+   <string>Paint2D - Transformation Madness</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <widget class="OpenGLPanel" name="panel">
@@ -112,7 +112,7 @@
        <x>20</x>
        <y>10</y>
        <width>271</width>
-       <height>331</height>
+       <height>271</height>
       </rect>
      </property>
      <property name="sizePolicy">
@@ -122,7 +122,7 @@
       </sizepolicy>
      </property>
      <property name="currentIndex">
-      <number>0</number>
+      <number>3</number>
      </property>
      <widget class="QWidget" name="tab_2">
       <attribute name="title">
@@ -131,8 +131,8 @@
       <widget class="QWidget" name="verticalLayoutWidget_4">
        <property name="geometry">
         <rect>
-         <x>30</x>
-         <y>0</y>
+         <x>20</x>
+         <y>10</y>
          <width>201</width>
          <height>151</height>
         </rect>
@@ -150,99 +150,37 @@
         <property name="bottomMargin">
          <number>20</number>
         </property>
+        <item alignment="Qt::AlignHCenter">
+         <widget class="QLabel" name="label">
+          <property name="text">
+           <string>Translate</string>
+          </property>
+         </widget>
+        </item>
         <item>
          <layout class="QVBoxLayout" name="verticalLayout_5">
-          <item>
-           <widget class="QLabel" name="label">
+          <item alignment="Qt::AlignHCenter">
+           <widget class="QToolButton" name="upBtn">
+            <property name="maximumSize">
+             <size>
+              <width>50</width>
+              <height>40</height>
+             </size>
+            </property>
             <property name="text">
-             <string>Camera Movement</string>
+             <string>...</string>
+            </property>
+            <property name="icon">
+             <iconset resource="images.qrc">
+              <normaloff>:/images/cima.png</normaloff>:/images/cima.png</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>30</width>
+              <height>50</height>
+             </size>
             </property>
            </widget>
-          </item>
-          <item>
-           <layout class="QHBoxLayout" name="horizontalLayout_9">
-            <item>
-             <widget class="QToolButton" name="leftBtn_2">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>50</width>
-                <height>40</height>
-               </size>
-              </property>
-              <property name="text">
-               <string>triangle</string>
-              </property>
-              <property name="icon">
-               <iconset resource="images.qrc">
-                <normaloff>:/images/esquerda.png</normaloff>:/images/esquerda.png</iconset>
-              </property>
-              <property name="iconSize">
-               <size>
-                <width>30</width>
-                <height>50</height>
-               </size>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QToolButton" name="upBtn">
-              <property name="maximumSize">
-               <size>
-                <width>50</width>
-                <height>40</height>
-               </size>
-              </property>
-              <property name="text">
-               <string>...</string>
-              </property>
-              <property name="icon">
-               <iconset resource="images.qrc">
-                <normaloff>:/images/cima.png</normaloff>:/images/cima.png</iconset>
-              </property>
-              <property name="iconSize">
-               <size>
-                <width>30</width>
-                <height>50</height>
-               </size>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QToolButton" name="rigthBtn_2">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>50</width>
-                <height>40</height>
-               </size>
-              </property>
-              <property name="text">
-               <string>triangle</string>
-              </property>
-              <property name="icon">
-               <iconset resource="images.qrc">
-                <normaloff>:/images/direita.png</normaloff>:/images/direita.png</iconset>
-              </property>
-              <property name="iconSize">
-               <size>
-                <width>30</width>
-                <height>50</height>
-               </size>
-              </property>
-             </widget>
-            </item>
-           </layout>
           </item>
           <item>
            <layout class="QHBoxLayout" name="horizontalLayout">
@@ -343,8 +281,8 @@
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>200</y>
-         <width>278</width>
+         <y>160</y>
+         <width>241</width>
          <height>71</height>
         </rect>
        </property>
@@ -394,16 +332,6 @@
            <widget class="QLineEdit" name="yEdit"/>
           </item>
           <item>
-           <widget class="QLabel" name="translate_z_label">
-            <property name="text">
-             <string>Z:</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLineEdit" name="zEdit"/>
-          </item>
-          <item>
            <widget class="QPushButton" name="goTransBtn">
             <property name="text">
              <string>Go</string>
@@ -411,35 +339,6 @@
            </widget>
           </item>
          </layout>
-        </item>
-       </layout>
-      </widget>
-      <widget class="QWidget" name="layoutWidget">
-       <property name="geometry">
-        <rect>
-         <x>50</x>
-         <y>160</y>
-         <width>171</width>
-         <height>20</height>
-        </rect>
-       </property>
-       <layout class="QHBoxLayout" name="horizontalLayout_10">
-        <item>
-         <widget class="QRadioButton" name="incCheck">
-          <property name="text">
-           <string>Increase</string>
-          </property>
-          <property name="checked">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QRadioButton" name="decCheck">
-          <property name="text">
-           <string>Decrease</string>
-          </property>
-         </widget>
         </item>
        </layout>
       </widget>
@@ -461,6 +360,9 @@
         <property name="spacing">
          <number>10</number>
         </property>
+        <item>
+         <widget class="QDial" name="dialRotation"/>
+        </item>
         <item alignment="Qt::AlignHCenter">
          <widget class="QLabel" name="label_5">
           <property name="text">
@@ -468,18 +370,15 @@
           </property>
          </widget>
         </item>
-        <item>
-         <widget class="QDial" name="dialRotation"/>
-        </item>
        </layout>
       </widget>
       <widget class="QWidget" name="verticalLayoutWidget_7">
        <property name="geometry">
         <rect>
-         <x>20</x>
-         <y>90</y>
-         <width>231</width>
-         <height>174</height>
+         <x>30</x>
+         <y>110</y>
+         <width>181</width>
+         <height>128</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_9">
@@ -498,37 +397,12 @@
         <property name="bottomMargin">
          <number>20</number>
         </property>
-        <item>
+        <item alignment="Qt::AlignHCenter">
          <widget class="QLabel" name="label_7">
           <property name="text">
            <string>Rotate angule:</string>
           </property>
          </widget>
-        </item>
-        <item>
-         <layout class="QHBoxLayout" name="horizontalLayout_8">
-          <item>
-           <widget class="QRadioButton" name="rotateXY">
-            <property name="text">
-             <string>X/Y</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QRadioButton" name="rotateXZ">
-            <property name="text">
-             <string>X/Z</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QRadioButton" name="rotateYZ">
-            <property name="text">
-             <string>Y/Z</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
         </item>
         <item>
          <layout class="QHBoxLayout" name="rotate_layout">
@@ -574,22 +448,6 @@
         </item>
        </layout>
       </widget>
-      <widget class="QCheckBox" name="lightningCheckBox">
-       <property name="geometry">
-        <rect>
-         <x>90</x>
-         <y>270</y>
-         <width>87</width>
-         <height>20</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Lightning</string>
-       </property>
-       <property name="checked">
-        <bool>true</bool>
-       </property>
-      </widget>
      </widget>
      <widget class="QWidget" name="tab">
       <attribute name="title">
@@ -598,10 +456,10 @@
       <widget class="QWidget" name="verticalLayoutWidget_8">
        <property name="geometry">
         <rect>
-         <x>60</x>
-         <y>10</y>
-         <width>151</width>
-         <height>231</height>
+         <x>50</x>
+         <y>20</y>
+         <width>160</width>
+         <height>138</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_10">
@@ -934,7 +792,7 @@
        <x>10</x>
        <y>10</y>
        <width>61</width>
-       <height>744</height>
+       <height>608</height>
       </rect>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -1000,7 +858,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QToolButton" name="makePyramidBtn">
+       <widget class="QToolButton" name="makeTriangleBtn">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
           <horstretch>0</horstretch>
@@ -1018,7 +876,7 @@
         </property>
         <property name="icon">
          <iconset resource="images.qrc">
-          <normaloff>:/images/piramide.png</normaloff>:/images/piramide.png</iconset>
+          <normaloff>:/images/triangulo.png</normaloff>:/images/triangulo.png</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -1029,7 +887,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QToolButton" name="makeCubeBtn">
+       <widget class="QToolButton" name="makeSquareBtn">
         <property name="maximumSize">
          <size>
           <width>50</width>
@@ -1041,7 +899,7 @@
         </property>
         <property name="icon">
          <iconset resource="images.qrc">
-          <normaloff>:/images/cubo.png</normaloff>:/images/cubo.png</iconset>
+          <normaloff>:/images/retangulo.png</normaloff>:/images/retangulo.png</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -1052,7 +910,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QToolButton" name="makeConeBtn">
+       <widget class="QToolButton" name="makePolygonBtn">
         <property name="maximumSize">
          <size>
           <width>50</width>
@@ -1064,53 +922,7 @@
         </property>
         <property name="icon">
          <iconset resource="images.qrc">
-          <normaloff>:/images/cone.png</normaloff>:/images/cone.png</iconset>
-        </property>
-        <property name="iconSize">
-         <size>
-          <width>30</width>
-          <height>50</height>
-         </size>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QToolButton" name="makeSphereBtn">
-        <property name="maximumSize">
-         <size>
-          <width>50</width>
-          <height>100</height>
-         </size>
-        </property>
-        <property name="text">
-         <string>...</string>
-        </property>
-        <property name="icon">
-         <iconset resource="images.qrc">
-          <normaloff>:/images/esfera.png</normaloff>:/images/esfera.png</iconset>
-        </property>
-        <property name="iconSize">
-         <size>
-          <width>30</width>
-          <height>50</height>
-         </size>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QToolButton" name="makeCylinderBtn">
-        <property name="maximumSize">
-         <size>
-          <width>50</width>
-          <height>100</height>
-         </size>
-        </property>
-        <property name="text">
-         <string>...</string>
-        </property>
-        <property name="icon">
-         <iconset resource="images.qrc">
-          <normaloff>:/images/cilindro.png</normaloff>:/images/cilindro.png</iconset>
+          <normaloff>:/images/pentagono.png</normaloff>:/images/pentagono.png</iconset>
         </property>
         <property name="iconSize">
          <size>

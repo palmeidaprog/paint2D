@@ -15,5 +15,10 @@
         <file>images/zoomIn.png</file>
         <file>images/zoomOut.png</file>
         <file>images/malha.jpg</file>
+        <file>images/cubo.png</file>
+        <file>images/piramide.png</file>
+        <file>images/cone.png</file>
+        <file>images/esfera.png</file>
+        <file>images/cilindro.png</file>
     </qresource>
 </RCC>

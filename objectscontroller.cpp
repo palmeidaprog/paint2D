@@ -58,19 +58,19 @@ ObjectsController &ObjectsController::addObject(PaintObject *obj)
     return *this;
 }
 
-void ObjectsController::addTranslation(double x, double y)
+void ObjectsController::addTranslation(double x, double y, double z)
 {
-    this->selected->addTranslation(x, y);
+    this->selected->addTranslation(x, y, z);
 }
 
-void ObjectsController::addRotation(double angle)
+void ObjectsController::addRotation(double angle, double axis)
 {
-    this->selected->addRotation(angle);
+    this->selected->addRotation(angle, axis);
 }
 
-void ObjectsController::addScale(double x, double y)
+void ObjectsController::addScale(double x, double y, double z)
 {
-    this->selected->addScale(x, y);
+    this->selected->addScale(x, y, z);
 }
 
 void ObjectsController::addReflection(double x, double y)

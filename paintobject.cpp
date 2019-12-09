@@ -12,13 +12,12 @@ PaintObject::~PaintObject() noexcept {
     for (auto transformation : this->transformations) {
         delete transformation;
     }
-
 }
 
 
 bool PaintObject::hasNextTransformation()
 {
-    cout << "trans: " << this->transformation_index << endl;
+    //cout << "trans: " << this->transformation_index << endl;
     return this->transformation_index >= 0;
 }
 
@@ -30,10 +29,11 @@ Transformation &PaintObject::nextTransformation()
     return *this->transformations[this->transformation_index--];
 }
 
-void PaintObject::addTranslation(double x, double y)
+void PaintObject::addTranslation(double x, double y, double z)
 {
     this->transformations.push_back(new Transformation(
-                                            TransformationType::TRANSLATE, x, y));
+                                            TransformationType::TRANSLATE, x,
+                                        y, z));
     this->resetIndexes();
 }
 
@@ -45,10 +45,11 @@ void PaintObject::addShear(double b, double a)
 
 }
 
-void PaintObject::addRotation(double angle)
+void PaintObject::addRotation(double angle, double axis)
 {
     this->transformations.push_back(new Transformation(
-                                            TransformationType::ROTATE, angle, 0));
+                                            TransformationType::ROTATE, angle,
+                                        axis));
     this->resetIndexes();
 }
 
@@ -59,10 +60,10 @@ void PaintObject::addReflection(double x, double y)
     this->resetIndexes();
 }
 
-void PaintObject::addScale(double x, double y)
+void PaintObject::addScale(double x, double y, double z)
 {
     this->transformations.push_back(new Transformation(
-                                        TransformationType::SCALE, x, y));
+                                        TransformationType::SCALE, x, y, z));
     this->resetIndexes();
 }
 

@@ -32,9 +32,9 @@ public:
     void updateSelected(unsigned newSelectedId);
     void deleteSelected();
     ObjectsController &addObject(PaintObject *obj);
-    void addTranslation(double x, double y);
-    void addRotation(double angle);
-    void addScale(double x, double y);
+    void addTranslation(double x, double y, double z);
+    void addRotation(double angle, double axis);
+    void addScale(double x, double y, double z);
     void addReflection(double x, double y);
     void addShear(double b, double a);
     PaintObject *getNextObject();

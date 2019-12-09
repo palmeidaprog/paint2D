@@ -7,18 +7,20 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     panel = ui->panel;
     //doubleSpinBoxRadius = ui->doubleSpinBoxRadius;
-    spinBoxSides = ui->spinBoxSides;
+    //spinBoxSides = ui->spinBoxSides;
     //colorsCombo = ui->colorsCombo;
-    spinBoxSides->setValue(3);
+    //spinBoxSides->setValue(3);
     //scaleSlider = ui->scaleSlider;
     this->colorBtn = this->ui->colorBtn;
     //doubleSpinBoxRadius->setValue(2.0);
     dialRotation = ui->dialRotation;
     this->angleRotEdit = ui->angleRotEdit;
     this->rotateBtn = ui->rotateBtn;
-    this->makePolygonBtn = ui->makePolygonBtn;
-    this->makeSquareBtn = ui->makeSquareBtn;
-    this->makeTriangleBtn = ui->makeTriangleBtn;
+    this->makeConeBtn = ui->makeConeBtn;
+    this->makeCubeBtn = ui->makeCubeBtn;
+    this->makeCylinderBtn = ui->makeCylinderBtn;
+    this->makeSphereBtn = ui->makeSphereBtn;
+    this->makePyramidBtn = ui->makePyramidBtn;
     this->xEdit = ui->xEdit;
     this->yEdit = ui->yEdit;
     this->goTransBtn = ui->goTransBtn;
@@ -26,35 +28,48 @@ MainWindow::MainWindow(QWidget *parent) :
     this->downBtn = ui->downBtn;
     this->leftBtn = ui->leftBtn;
     this->rightBtn = ui->rigthBtn;
-
+    this->rotateXY = ui->rotateXY;
+    this->rotateXZ = ui->rotateXZ;
+    this->rotateYZ = ui->rotateYZ;
+    this->lightningCheckBox = ui->lightningCheckBox;
+    this->zEdit = ui->zEdit;
+    this->decCheck = ui->decCheck;
 
     //events
+    connect(this->lightningCheckBox, SIGNAL(toggled(bool)),
+            panel, SLOT(enableLightning(bool)));
     connect(spinBoxSides, SIGNAL(valueChanged(int)), this,
             SLOT(changeSides(int)));
     connect(this->colorBtn, SIGNAL(clicked()), this,
             SLOT(changeColorSlot()));
-    connect(this->dialRotation, SIGNAL(sliderMoved(int)), panel,
-            SLOT(rotationChanged(int)));
+    connect(this->dialRotation, SIGNAL(sliderMoved(int)), this,
+            SLOT(rotationDial(int)));
     connect(this->rotateBtn, SIGNAL(clicked(bool)), this,
             SLOT(rotateEvent(void)));
-    connect(this->makeTriangleBtn, SIGNAL(clicked(bool)), this,
-            SLOT(triangleClicked()));
-    connect(this->makeSquareBtn, SIGNAL(clicked(bool)), this,
-            SLOT(squareClicked()));
-    connect(this->makePolygonBtn, SIGNAL(clicked(bool)), this,
-            SLOT(polygonClicked()));
+
+    connect(this->makeConeBtn, SIGNAL(clicked(bool)), this,
+            SLOT(coneClicked()));
+    connect(this->makeCubeBtn, SIGNAL(clicked(bool)), this,
+            SLOT(cubeClicked()));
+    connect(this->makeCylinderBtn, SIGNAL(clicked(bool)), this,
+            SLOT(cylinderClicked()));
+    connect(this->makeSphereBtn, SIGNAL(clicked(bool)), this,
+            SLOT(sphereClicked()));
+    connect(this->makePyramidBtn, SIGNAL(clicked(bool)), this,
+            SLOT(pyramidClicked()));
+
 
     // translate
     connect(this->goTransBtn, SIGNAL(clicked(bool)), this,
             SLOT(goTranslateClicked()));
     connect(this->upBtn, SIGNAL(clicked(bool)), this,
-            SLOT(topTranslate()));
+            SLOT(upCamera()));
     connect(this->downBtn, SIGNAL(clicked(bool)), this,
-            SLOT(bottomTranslate()));
+            SLOT(downCamera()));
     connect(this->leftBtn, SIGNAL(clicked(bool)), this,
-            SLOT(leftTranslate()));
+            SLOT(leftCamera()));
     connect(this->rightBtn, SIGNAL(clicked(bool)), this,
-            SLOT(rightTranslate()));
+            SLOT(rightCamera()));
 
     // zoom
     this->zoomInBtn = ui->zoomInBtn;
@@ -115,6 +130,16 @@ MainWindow::~MainWindow() {
     delete ui;
 }
 
+double MainWindow::getRotationType()
+{
+    if (this->rotateYZ->isChecked()) {
+        return 1.0f;
+    } else if (this->rotateXZ->isChecked()) {
+        return 2.0f;
+    }
+    return 3.0f;
+}
+
 
 void MainWindow::changeSides(int i) {
     cout << "i: " << i;
@@ -138,51 +163,71 @@ void MainWindow::sliderChange(int i0, int i1) {
 }
 
 void MainWindow::rotateEvent() {
-    this->panel->rotate(this->angleRotEdit->text().toFloat());
+    this->panel->rotate(this->angleRotEdit->text().toFloat(),
+                        this->getRotationType());
 }
 
-void MainWindow::triangleClicked()
+void MainWindow::pyramidClicked()
 {
     panel->drawObject(3);
     this->createListEntry();
 }
 
-void MainWindow::squareClicked()
+void MainWindow::cubeClicked()
 {
     panel->drawObject(4);
     this->createListEntry();
 }
 
-void MainWindow::polygonClicked()
+void MainWindow::coneClicked()
 {
-    panel->drawObject(this->spinBoxSides->text().toInt());
+    panel->drawObject(2);
+    this->createListEntry();
+}
+
+void MainWindow::cylinderClicked()
+{
+    panel->drawObject(5);
+    this->createListEntry();
+}
+
+
+void MainWindow::sphereClicked()
+{
+    panel->drawObject(6);
     this->createListEntry();
 }
 
 void MainWindow::goTranslateClicked()
 {
     this->panel->translate(this->xEdit->text().toDouble(),
-                           this->yEdit->text().toDouble());
+                           this->yEdit->text().toDouble(),
+                           this->zEdit->text().toDouble());
 }
 
-void MainWindow::rightTranslate()
+
+void MainWindow::rightCamera()
 {
-    this->panel->translate(1,0);
+    int value = this->decCheck->isChecked() ? -1 : 1;
+    this->panel->cameraMovement(value, Coordinate::E);
 }
 
-void MainWindow::topTranslate()
+void MainWindow::upCamera()
 {
-    this->panel->translate(0,1);
+    int value = this->decCheck->isChecked() ? -1 : 1;
+    this->panel->cameraMovement(value, Coordinate::DISTANCE);
 }
 
-void MainWindow::bottomTranslate()
+void MainWindow::downCamera()
 {
-    this->panel->translate(0,-1);
+    int value = this->decCheck->isChecked() ? -1 : 1;
+    this->panel->cameraMovement(value,Coordinate::Z);
 }
 
-void MainWindow::leftTranslate()
+void MainWindow::leftCamera()
 {
-    this->panel->translate(-1, 0);
+    int value = this->decCheck->isChecked() ? -1 : 1;
+    this->panel->cameraMovement(value, Coordinate::Y);
 }
 
 void MainWindow::zoomIn()
@@ -287,12 +332,12 @@ void MainWindow::deleteAllClicked()
 
 void MainWindow::scaleUp()
 {
-    this->panel->scale(1.1, 1.1);
+    this->panel->scale(1.1, 1.1, 1.1);
 }
 
 void MainWindow::scaleDown()
 {
-    this->panel->scale(0.9, 0.9);
+    this->panel->scale(0.9, 0.9, 0.9);
 }
 
 void MainWindow::updateMesh()
@@ -309,6 +354,11 @@ void MainWindow::updateMesh()
     mb.layout()->addWidget(&bt);
     mb.exec();
     this->panel->meshSize(le.text().toInt(), le2.text().toInt());
+}
+
+void MainWindow::rotationDial(int value)
+{
+    this->panel->rotate(value, this->getRotationType());
 }
 
 void MainWindow::selectObject(QModelIndex index) {
