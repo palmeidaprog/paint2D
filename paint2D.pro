@@ -32,7 +32,8 @@ HEADERS  += mainwindow.h \
     camera.h \
     vector3.h \
     matrix4.h \
-    vector4.h
+    vector4.h \
+    coordinate.h
 
 FORMS    += mainwindow.ui
 

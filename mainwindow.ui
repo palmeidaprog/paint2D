@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Paint2D - Transformation Madness</string>
+   <string>Paint3D</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <widget class="OpenGLPanel" name="panel">
@@ -40,7 +40,7 @@
      <x>0</x>
      <y>0</y>
      <width>1124</width>
-     <height>19</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_File">
@@ -122,7 +122,7 @@
       </sizepolicy>
      </property>
      <property name="currentIndex">
-      <number>1</number>
+      <number>3</number>
      </property>
      <widget class="QWidget" name="tab_2">
       <attribute name="title">
@@ -131,10 +131,10 @@
       <widget class="QWidget" name="verticalLayoutWidget_4">
        <property name="geometry">
         <rect>
-         <x>20</x>
-         <y>10</y>
+         <x>30</x>
+         <y>0</y>
          <width>201</width>
-         <height>151</height>
+         <height>131</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_6">
@@ -153,7 +153,7 @@
         <item alignment="Qt::AlignHCenter">
          <widget class="QLabel" name="label">
           <property name="text">
-           <string>Translate</string>
+           <string>Camera Movement</string>
           </property>
          </widget>
         </item>
@@ -349,6 +349,35 @@
            </widget>
           </item>
          </layout>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="layoutWidget">
+       <property name="geometry">
+        <rect>
+         <x>50</x>
+         <y>130</y>
+         <width>171</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <layout class="QHBoxLayout" name="horizontalLayout_10">
+        <item>
+         <widget class="QRadioButton" name="incCheck">
+          <property name="text">
+           <string>Increase</string>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QRadioButton" name="decCheck">
+          <property name="text">
+           <string>Decrease</string>
+          </property>
+         </widget>
         </item>
        </layout>
       </widget>
@@ -734,6 +763,22 @@
        </layout>
       </widget>
      </widget>
+    </widget>
+    <widget class="QCheckBox" name="lightningCheckBox">
+     <property name="geometry">
+      <rect>
+       <x>100</x>
+       <y>290</y>
+       <width>87</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Lightning</string>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
     </widget>
    </widget>
   </widget>

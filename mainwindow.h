@@ -18,6 +18,8 @@
 #include "openglpanel.h"
 #include <QCheckBox>
 #include <fstream>
+#include <QRadioButton>
+#include <coordinate.h>
 
 namespace Ui {
 class MainWindow;
@@ -37,20 +39,22 @@ private:
     QSpinBox *spinBoxSides;
     QDoubleSpinBox *doubleSpinBoxRadius;
     QComboBox *colorsCombo;
-    QCheckBox *xCheck, *yCheck;
+    QRadioButton *rotateXY, *rotateXZ, *rotateYZ, *decCheck;
+    QCheckBox *xCheck, *yCheck, *lightningCheckBox;
     QToolButton *colorBtn, *rotateBtn, *makeConeBtn, *makeCubeBtn,
     *makeCylinderBtn, *makeSphereBtn, *makePyramidBtn, //*makePolygonBtn,
     *upBtn, *downBtn, *rightBtn, *leftBtn, *zoomInBtn,
     *zoomOutBtn, *scaleUpBtn, *scaleDownBtn, *meshBtn;
     QSlider *scaleSlider;
     QDial *dialRotation;
-    QLineEdit *angleRotEdit, *xEdit, *yEdit, *aEdit, *bEdit;
+    QLineEdit *angleRotEdit, *xEdit, *yEdit, *aEdit, *bEdit, *zEdit;
     QPushButton *goTransBtn, *delSelectedBtn, *deleteAllBtn, *openBtn,
     *reflectBtn, *shearBtn, *saveBtn;
     QStringListModel *model;
     QListView *view;
 
     QColor getColor(const QColor &startigColor);
+    double getRotationType();
 
 public slots:
     void changeSides(int i);
@@ -63,10 +67,10 @@ public slots:
     void sphereClicked();
     void coneClicked();
     void goTranslateClicked();
-    void rightTranslate();
-    void topTranslate();
-    void bottomTranslate();
-    void leftTranslate();
+    void rightCamera();
+    void upCamera();
+    void downCamera();
+    void leftCamera();
     void zoomIn();
     void zoomOut();
     void shear();
@@ -79,6 +83,7 @@ public slots:
     void scaleUp();
     void scaleDown();
     void updateMesh();
+    void rotationDial(int value);
 
     // list view
     void selectObject(QModelIndex index);
