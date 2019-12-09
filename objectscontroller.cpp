@@ -68,9 +68,9 @@ void ObjectsController::addRotation(double angle, double axis)
     this->selected->addRotation(angle, axis);
 }
 
-void ObjectsController::addScale(double x, double y)
+void ObjectsController::addScale(double x, double y, double z)
 {
-    this->selected->addScale(x, y);
+    this->selected->addScale(x, y, z);
 }
 
 void ObjectsController::addReflection(double x, double y)

@@ -62,7 +62,7 @@ public:
     void setColor(QColor color);
     void rotate(float angle, float axis);
     void translate(double x, double y, double z);
-    void scale(double x, double y);
+    void scale(double x, double y, double z);
     void shear(double b, double a);
     void reflection(double x, double y);
 

@@ -7,9 +7,9 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     panel = ui->panel;
     //doubleSpinBoxRadius = ui->doubleSpinBoxRadius;
-    spinBoxSides = ui->spinBoxSides;
+    //spinBoxSides = ui->spinBoxSides;
     //colorsCombo = ui->colorsCombo;
-    spinBoxSides->setValue(3);
+    //spinBoxSides->setValue(3);
     //scaleSlider = ui->scaleSlider;
     this->colorBtn = this->ui->colorBtn;
     //doubleSpinBoxRadius->setValue(2.0);
@@ -332,12 +332,12 @@ void MainWindow::deleteAllClicked()
 
 void MainWindow::scaleUp()
 {
-    this->panel->scale(1.1, 1.1);
+    this->panel->scale(1.1, 1.1, 1.1);
 }
 
 void MainWindow::scaleDown()
 {
-    this->panel->scale(0.9, 0.9);
+    this->panel->scale(0.9, 0.9, 0.9);
 }
 
 void MainWindow::updateMesh()

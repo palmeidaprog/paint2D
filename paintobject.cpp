@@ -60,10 +60,10 @@ void PaintObject::addReflection(double x, double y)
     this->resetIndexes();
 }
 
-void PaintObject::addScale(double x, double y)
+void PaintObject::addScale(double x, double y, double z)
 {
     this->transformations.push_back(new Transformation(
-                                        TransformationType::SCALE, x, y));
+                                        TransformationType::SCALE, x, y, z));
     this->resetIndexes();
 }
 

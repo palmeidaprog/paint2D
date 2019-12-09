@@ -148,7 +148,7 @@ void OpenGLPanel::perspectiveGL(GLdouble fovY, GLdouble aspect,
 
 void OpenGLPanel::lightning() {
     GLfloat specLight[4]={1.0, 1.0, 1.0, 1.0};
-    GLfloat positionLight[4]={0.0, 50.0, 50.0, 1.0};
+    GLfloat positionLight[4]={80.0, 80.0, 80.0, 1.0};
     GLfloat ambientLight[4]={0.2,0.2,0.2,1.0};
     GLfloat difLight[4]={0.7,0.7,0.7,1.0};
     GLfloat spec[4]={1.0,1.0,1.0,1.0};
@@ -248,11 +248,13 @@ void OpenGLPanel::paintGL() {
                 glTranslatef(-(this->width()/2.0), -(this->height()/2.0), 0);
             } else if (transformation.getType() ==
                        TransformationType::ROTATE) {
-                glTranslatef((this->width()/2.0), (this->height()/2.0), 0);
+                //glTranslatef((this->width()/2.0), (this->height()/2.0), 0);
+                glTranslatef(1.0f, 1.0f, 1.0f);
                 double d2 = transformation.getData2();
                 glRotatef(transformation.getData1(), d2==1?1:0, d2==2?1:0,
                           d2==3?1:0);
-                glTranslatef(-(this->width()/2.0), -(this->height()/2.0), 0);
+                glTranslatef(-1.0f, -1.0f, -1.0f);
+                //glTranslatef(-(this->width()/2.0), -(this->height()/2.0), 0);
             } else if (transformation.getType() ==
                        TransformationType::TRANSLATE) {
                 glTranslatef(transformation.getData1(),
@@ -359,9 +361,9 @@ void OpenGLPanel::cameraMovement(double value, Coordinate coord)
 }
 
 
-void OpenGLPanel::scale(double x, double y)
+void OpenGLPanel::scale(double x, double y, double z)
 {
-    this->objects.getSelected()->addScale(x, y);
+    this->objects.getSelected()->addScale(x, y, z);
     update();
 }
 
@@ -803,38 +805,21 @@ void OpenGLPanel::drawTriangle() {
 
 void OpenGLPanel::drawPyramid()
 {
-//    glTranslated(eixoX[j], eixoY[j], eixoZ[j]);
-//    glRotated(anguloX[j], 1, 0, 0);
-//    glRotated(anguloY[j], 0, 1, 0);
-//    glRotated(anguloZ[j], 0, 0, 1);
-//    glScaled(escalaX[j], escalaY[j], escalaZ[j]);
     glBegin(GL_TRIANGLES);
-    //glColor3ub(red[j],green[j],blue[j]);
     glVertex3f( 0.0f, 1.0f, 0.0f);
-    //glColor3ub(red[j],green[j],blue[j]);
     glVertex3f(-1.0f, -1.0f, 1.0f);
-    //glColor3ub(red[j],green[j],blue[j]);
     glVertex3f(1.0f, -1.0f, 1.0f);
 
-    //glColor3ub(red[j],green[j],blue[j]);
     glVertex3f(0.0f, 1.0f, 0.0f);
-    //glColor3ub(red[j],green[j],blue[j]);
     glVertex3f(1.0f, -1.0f, 1.0f);
-    //glColor3ub(red[j],green[j],blue[j]);
     glVertex3f(1.0f, -1.0f, -1.0f);
-
-    //glColor3ub(red[j],green[j],blue[j]);
     glVertex3f(0.0f, 1.0f, 0.0f);
-    //glColor3ub(red[j],green[j],blue[j]);
     glVertex3f(1.0f, -1.0f, -1.0f);
-    //glColor3ub(red[j],green[j],blue[j]);
     glVertex3f(-1.0f, -1.0f, -1.0f);
 
-    //glColor3ub(red[j],green[j],blue[j]);
     glVertex3f( 0.0f, 1.0f, 0.0f);
-    //glColor3ub(red[j],green[j],blue[j]);
     glVertex3f(-1.0f,-1.0f,-1.0f);
-    //glColor3ub(red[j],green[j],blue[j]);
+
     glVertex3f(-1.0f,-1.0f, 1.0f);
     glLineWidth(2);
 
@@ -906,12 +891,10 @@ void OpenGLPanel::drawSphere() {
     for (int ph2=-90;ph2<90;ph2+=5) {
         glBegin(GL_QUAD_STRIP);
         for (int th2=0;th2<=360;th2+=10) {
-            //glColor3ub(red[j],green[j],blue[j]);
             double x1 = sin(M_PI/180*th2)*cos(M_PI/180*ph2);
             double y1 = cos(M_PI/180*th2)*cos(M_PI/180*ph2);
             double z1 = sin(M_PI/180*ph2);
             glVertex3d(x1,y1,z1);
-            //lColor3ub(red[j],green[j],blue[j]);
             double x2 = sin(M_PI/180*th2)*cos(M_PI/180*(ph2+5));
             double y2 = cos(M_PI/180*th2)*cos(M_PI/180*(ph2+5));
             double z2 = sin(M_PI/180*(ph2+5));
@@ -942,11 +925,8 @@ void OpenGLPanel::drawSphere() {
 void OpenGLPanel::drawCone() {
     glBegin(GL_TRIANGLES);
     for (int k=0;k<=360;k+=5){
-        //glColor3ub(red[j],green[j],blue[j]);
         glVertex3f(0,0,1);
-        //glColor3ub(red[j],green[j],blue[j]);
         glVertex3f(cos(M_PI/180*k),sin(M_PI/180*k),0);
-        //glColor3ub(red[j],green[j],blue[j]);
         glVertex3f(cos(M_PI/180*(k+5)),sin(M_PI/180*(k+5)),0);
     }
     glEnd();
@@ -955,11 +935,9 @@ void OpenGLPanel::drawCone() {
     glRotated(90,1,0,0);
     glBegin(GL_TRIANGLES);
     for (int k=0;k<=360;k+=5) {
-        //glColor3ub(red[j],green[j],blue[j]);
         glVertex3f(0,0,0);
-        //glColor3ub(red[j],green[j],blue[j]);
         glVertex3f(cos(M_PI/180*k),0,sin(M_PI/180*k));
-        //glColor3ub(red[j],green[j],blue[j]);
+
         glVertex3f(cos(M_PI/180*(k+5)),0,sin(M_PI/180*(k+5)));
     }
     glEnd();
